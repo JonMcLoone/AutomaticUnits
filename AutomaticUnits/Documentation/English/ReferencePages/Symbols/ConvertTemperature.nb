@@ -1,0 +1,667 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     16570,        658]
+NotebookOptionsPosition[     11526,        476]
+NotebookOutlinePosition[     12173,        500]
+CellTagsIndexPosition[     12094,        495]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["?", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->19026],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->20394],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->29909],
+
+Cell["AutomaticUnits Package", "Categorization",
+ CellChangeTimes->{3.494673535603388*^9},
+ CellLabel->"Paclet Name",
+ CellID->19755],
+
+Cell["AutomaticUnits`", "Categorization",
+ CellChangeTimes->{{3.494673541378965*^9, 3.4946735416829953`*^9}},
+ CellLabel->"Context",
+ CellID->30293],
+
+Cell["\<\
+AutomaticUnits/ref/ConvertTemperature\
+\>", "Categorization",
+ CellChangeTimes->{3.4946735432751546`*^9},
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Synonyms", "SynonymsSection"],
+
+Cell["XXXX", "Synonyms"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1861],
+
+Cell["XXXX", "Keywords",
+ CellID->1632]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->18540],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->8724],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->1112],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->17349],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->30461]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection"],
+
+Cell["Jon McLoone", "Details",
+ CellChangeTimes->{{3.5001982875141726`*^9, 3.500198289217343*^9}},
+ CellLabel->"Lead"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Developers"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Authors"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name"],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA"],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes"],
+
+Cell["\<\
+Possible uses should include using CovertTemperature rather than Convert.\
+\>", "Details",
+ CellLabel->"Comments"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ConvertTemperature", "ObjectName",
+ CellID->21520],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{"ConvertTemperature", "[", 
+   RowBox[{
+    StyleBox["oldunit", "TI"], ",", 
+    StyleBox["newunit", "TI"]}], "]"}]], "InlineFormula"],
+ " \[LineSeparator]converts temperature from ",
+ Cell[BoxData[
+  StyleBox["oldunit", "TI"]], "InlineFormula"],
+ " to ",
+ Cell[BoxData[
+  StyleBox["newunit", "TI"]], "InlineFormula"],
+ " respecting non-absolute zeros."
+}], "Usage",
+ CellChangeTimes->{
+  3.34296603086122*^9, 3.34296623953777*^9, 3.34296634570631*^9, 
+   3.34296660414658*^9, 3.34296697447264*^9, {3.4662439651291857`*^9, 
+   3.4662440048177013`*^9}},
+ CellID->22981],
+
+Cell[TextData[{
+ "To use ",
+ Cell[BoxData["ConvertTemperature"], "InlineFormula"],
+ ", you first need to load the ",
+ ButtonBox["Units Package",
+  BaseStyle->"Link",
+  ButtonData->"paclet:Units/guide/UnitsPackage"],
+ " using ",
+ Cell[BoxData[
+  RowBox[{"Needs", "[", "\"\<Units`\>\"", "]"}]], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->380863996],
+
+Cell[TextData[{
+ "The following values for temperature scales ",
+ Cell[BoxData[
+  StyleBox["oldscale", "TI"]], "InlineFormula"],
+ " and ",
+ Cell[BoxData[
+  StyleBox["newscale", "TI"]], "InlineFormula"],
+ " can be used:"
+}], "Notes",
+ CellChangeTimes->{
+  3.34296675161068*^9, 3.342966916908*^9, {3.4946735993887653`*^9, 
+   3.4946735993917656`*^9}, {3.499759673079084*^9, 3.4997596737791243`*^9}},
+ CellID->11740],
+
+Cell["\<\
+Celsius, Fahrenheit, Rankine, Centigrade, Kelvin.\
+\>", "Notes",
+ CellChangeTimes->{{3.4946735998778143`*^9, 3.4946736189737234`*^9}},
+ CellID->42711110],
+
+Cell["\<\
+The conversion of temperature units is different from most other unit \
+conversions, because it is not multiplicative when not used as part of a \
+compound unit. This is because the zeros of various systems are set at \
+different values.\
+\>", "Notes",
+ CellChangeTimes->{
+  3.34296645266611*^9, {3.4822349472614465`*^9, 3.482234969121193*^9}},
+ CellID->17177],
+
+Cell[TextData[{
+ "For example, while a temperature gradient of 0 ",
+ Cell[BoxData[
+  ButtonBox["Centigrade",
+   BaseStyle->"Link",
+   ButtonData->"paclet:Units/ref/Centigrade"]], "InlineFormula"],
+ "/Meter is the same as 0 ",
+ Cell[BoxData[
+  ButtonBox["Fahrenheit",
+   BaseStyle->"Link",
+   ButtonData->"paclet:Units/ref/Fahrenheit"]], "InlineFormula"],
+ "/Meter the actual temperature 0 ",
+ Cell[BoxData[
+  ButtonBox["Centigrade",
+   BaseStyle->"Link",
+   ButtonData->"paclet:Units/ref/Centigrade"]], "InlineFormula"],
+ " is the same as ",
+ Cell[BoxData["32"], "InlineFormula"],
+ "  ",
+ Cell[BoxData[
+  ButtonBox["Fahrenheit",
+   BaseStyle->"Link",
+   ButtonData->"paclet:Units/ref/Fahrenheit"]], "InlineFormula"],
+ ". "
+}], "Notes",
+ CellChangeTimes->{
+  3.34296665919397*^9, {3.4822348480968323`*^9, 3.4822349323640633`*^9}, {
+   3.482234982804632*^9, 3.482234988828096*^9}},
+ CellID->29825],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["Convert",
+   BaseStyle->"Link",
+   ButtonData->"paclet:Units/ref/Convert"]], "InlineFormula"],
+ " only converts the units of temperature. Instead use ",
+ Cell[BoxData["ConvertTemperature"], "InlineFormula"],
+ " to convert the actual temperatures taking into account absolute zero."
+}], "Notes",
+ CellChangeTimes->{
+  3.34296668738873*^9, 3.34296694755709*^9, {3.49975973175344*^9, 
+   3.499759755809816*^9}},
+ CellID->14944]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "TutorialsSection",
+ CellID->31662],
+
+Cell[TextData[ButtonBox["Working With Units",
+ BaseStyle->"Link",
+ ButtonData->"paclet:AutomaticUnits/tutorial/WorkingWithUnits"]], "Tutorials",\
+
+ CellID->23409]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Links", "RelatedLinksSection",
+ CellID->31702],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->7049]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["See Also", "SeeAlsoSection",
+ CellID->14843],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->1284877]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "MoreAboutSection",
+ CellID->614109478],
+
+Cell[TextData[ButtonBox["AutomaticUnits Package",
+ BaseStyle->"Link",
+ ButtonData->"paclet:AutomaticUnits/guide/AutomaticUnits"]], "MoreAbout"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Extensions / Related Packages", "ExtensionsSection",
+ CellID->4146],
+
+Cell["XXXX", "Extensions",
+ CellID->862]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox["Examples", "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->7933],
+
+Cell["\<\
+Find the equivalent temperature in Fahrenheit to zero Centigrade\
+\>", "Notes",
+ CellChangeTimes->{
+  3.34296668738873*^9, 3.34296694755709*^9, {3.49975973175344*^9, 
+   3.499759811274988*^9}, {3.5001982993993607`*^9, 3.5001983070231233`*^9}},
+ CellID->82400425],
+
+Cell[BoxData[
+ RowBox[{"<<", "AutomaticUnits`"}]], "Input",
+ CellChangeTimes->{{3.4662440386935687`*^9, 3.466244040224858*^9}, 
+   3.4946735467735043`*^9},
+ CellLabel->"In[1]:=",
+ CellID->23075406],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ConvertTemperature", "[", 
+  RowBox[{
+   RowBox[{"0", " ", "Centigrade"}], ",", " ", "Fahrenheit"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.4662440418186483`*^9, 3.466244070272502*^9}},
+ CellLabel->"In[2]:=",
+ CellID->37765605],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"32", " ", "Fahrenheit"}],
+  AutomaticUnits`Unit[32, "Fahrenheit"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{{3.4662440609128876`*^9, 3.466244072022547*^9}, 
+   3.49975986060581*^9},
+ CellLabel->"Out[2]=",
+ CellID->69743982]
+}, Open  ]],
+
+Cell["\<\
+Find the equivalent temperature gradient in Fahrenheit to 1 degree Centigrade \
+per Meter\
+\>", "Notes",
+ CellChangeTimes->{
+  3.34296668738873*^9, 3.34296694755709*^9, {3.49975973175344*^9, 
+   3.499759755809816*^9}, {3.499759823871709*^9, 3.4997598554735165`*^9}, {
+   3.50019830919134*^9, 3.5001983136787887`*^9}},
+ CellID->50823556],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"1", " ", 
+    RowBox[{"Centigrade", "/", "Meter"}]}], ",", 
+   RowBox[{"Fahrenheit", "/", "Meter"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.499759863456973*^9, 3.499759881165986*^9}},
+ CellLabel->"In[3]:=",
+ CellID->15831217],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   FractionBox["9", "5"], " ", 
+   RowBox[{"Fahrenheit", 
+    SuperscriptBox["Meter", 
+     RowBox[{"-", "1"}]]}]}],
+  AutomaticUnits`Unit[
+   Rational[9, 5], "Fahrenheit"/"Meter"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{3.499759886196274*^9},
+ CellLabel->"Out[3]=",
+ CellID->453145493]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More Examples", "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->32556],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->20016],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->14433],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->16964],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->8358],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->20748]
+}, Closed]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->24105],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->6423],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->18919],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->14681],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->12622]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Design Discussion", "DesignDiscussionSection",
+ CellID->21188],
+
+Cell["XXXX", "DesignDiscussion",
+ CellID->32213]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Application Notes", "ApplicationNotesSection",
+ CellID->3062],
+
+Cell["XXXX", "ApplicationNotes",
+ CellID->14981]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Test Cases", "TestCasesSection",
+ CellID->13865691],
+
+Cell[BoxData["XXXX"], "Input",
+ CellID->542321887]
+}, Open  ]]
+},
+WindowSize->{740, 733},
+WindowMargins->{{Automatic, 289}, {Automatic, 98}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 3, 2011)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
+  CharacterEncoding -> "WindowsANSI"],
+PrivateNotebookOptions -> {"NotebookAuthor" -> ""}
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[9603, 391, 95, 2, 53, "ExtendedExamplesSection",
+   CellTags->"ExtendedExamples",
+   CellID->32556]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 11962, 488}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 318, 14, 22, "History",
+ CellID->19026],
+Cell[CellGroupData[{
+Cell[888, 38, 63, 1, 27, "CategorizationSection",
+ CellID->20394],
+Cell[954, 41, 75, 2, 31, "Categorization",
+ CellID->29909],
+Cell[1032, 45, 133, 3, 31, "Categorization",
+ CellID->19755],
+Cell[1168, 50, 148, 3, 31, "Categorization",
+ CellID->30293],
+Cell[1319, 55, 134, 4, 31, "Categorization"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1490, 64, 35, 0, 27, "SynonymsSection"],
+Cell[1528, 66, 24, 0, 70, "Synonyms"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1589, 71, 50, 1, 17, "KeywordsSection",
+ CellID->1861],
+Cell[1642, 74, 39, 1, 70, "Keywords",
+ CellID->1632]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1718, 80, 60, 1, 17, "TemplatesSection",
+ CellID->18540],
+Cell[1781, 83, 88, 2, 70, "Template",
+ CellID->8724],
+Cell[1872, 87, 77, 2, 70, "Template",
+ CellID->1112],
+Cell[1952, 91, 76, 2, 70, "Template",
+ CellID->17349],
+Cell[2031, 95, 78, 2, 70, "Template",
+ CellID->30461]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2146, 102, 33, 0, 17, "DetailsSection"],
+Cell[2182, 104, 118, 2, 31, "Details"],
+Cell[2303, 108, 49, 1, 31, "Details"],
+Cell[2355, 111, 46, 1, 31, "Details"],
+Cell[2404, 114, 51, 1, 31, "Details"],
+Cell[2458, 117, 41, 1, 31, "Details"],
+Cell[2502, 120, 41, 1, 31, "Details"],
+Cell[2546, 123, 43, 1, 31, "Details"],
+Cell[2592, 126, 58, 1, 31, "Details"],
+Cell[2653, 129, 124, 3, 31, "Details"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2814, 137, 56, 1, 62, "ObjectName",
+ CellID->21520],
+Cell[2873, 140, 634, 19, 73, "Usage",
+ CellID->22981],
+Cell[3510, 161, 348, 12, 25, "Notes",
+ CellID->380863996],
+Cell[3861, 175, 413, 12, 25, "Notes",
+ CellID->11740],
+Cell[4277, 189, 163, 4, 23, "Notes",
+ CellID->42711110],
+Cell[4443, 195, 370, 8, 51, "Notes",
+ CellID->17177],
+Cell[4816, 205, 895, 28, 41, "Notes",
+ CellID->29825],
+Cell[5714, 235, 468, 12, 39, "Notes",
+ CellID->14944]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6219, 252, 53, 1, 43, "TutorialsSection",
+ CellID->31662],
+Cell[6275, 255, 162, 4, 16, "Tutorials",
+ CellID->23409]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6474, 264, 60, 1, 30, "RelatedLinksSection",
+ CellID->31702],
+Cell[6537, 267, 43, 1, 16, "RelatedLinks",
+ CellID->7049]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6617, 273, 50, 1, 30, "SeeAlsoSection",
+ CellID->14843],
+Cell[6670, 276, 46, 1, 16, "RelatedLinks",
+ CellID->1284877]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6753, 282, 58, 1, 30, "MoreAboutSection",
+ CellID->614109478],
+Cell[6814, 285, 143, 2, 16, "MoreAbout"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6994, 292, 73, 1, 30, "ExtensionsSection",
+ CellID->4146],
+Cell[7070, 295, 40, 1, 16, "Extensions",
+ CellID->862]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7147, 301, 351, 11, 68, "PrimaryExamplesSection",
+ CellID->7933],
+Cell[7501, 314, 272, 6, 23, "Notes",
+ CellID->82400425],
+Cell[7776, 322, 197, 5, 27, "Input",
+ CellID->23075406],
+Cell[CellGroupData[{
+Cell[7998, 331, 253, 7, 27, "Input",
+ CellID->37765605],
+Cell[8254, 340, 278, 8, 25, "Output",
+ CellID->69743982]
+}, Open  ]],
+Cell[8547, 351, 346, 8, 23, "Notes",
+ CellID->50823556],
+Cell[CellGroupData[{
+Cell[8918, 363, 290, 8, 27, "Input",
+ CellID->15831217],
+Cell[9211, 373, 343, 12, 42, "Output",
+ CellID->453145493]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9603, 391, 95, 2, 53, "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->32556],
+Cell[9701, 395, 120, 3, 30, "ExampleSection",
+ CellID->20016],
+Cell[9824, 400, 143, 3, 18, "ExampleSection",
+ CellID->14433],
+Cell[CellGroupData[{
+Cell[9992, 407, 122, 3, 18, "ExampleSection",
+ CellID->16964],
+Cell[10117, 412, 124, 3, 21, "ExampleSubsection",
+ CellID->8358],
+Cell[10244, 417, 125, 3, 17, "ExampleSubsection",
+ CellID->20748]
+}, Closed]],
+Cell[10384, 423, 127, 3, 18, "ExampleSection",
+ CellID->24105],
+Cell[10514, 428, 136, 3, 18, "ExampleSection",
+ CellID->6423],
+Cell[10653, 433, 130, 3, 18, "ExampleSection",
+ CellID->18919],
+Cell[10786, 438, 135, 3, 18, "ExampleSection",
+ CellID->14681],
+Cell[10924, 443, 128, 3, 18, "ExampleSection",
+ CellID->12622]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11089, 451, 68, 1, 78, "DesignDiscussionSection",
+ CellID->21188],
+Cell[11160, 454, 48, 1, 16, "DesignDiscussion",
+ CellID->32213]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11245, 460, 67, 1, 30, "ApplicationNotesSection",
+ CellID->3062],
+Cell[11315, 463, 48, 1, 16, "ApplicationNotes",
+ CellID->14981]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11400, 469, 57, 1, 30, "TestCasesSection",
+ CellID->13865691],
+Cell[11460, 472, 50, 1, 27, "Input",
+ CellID->542321887]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

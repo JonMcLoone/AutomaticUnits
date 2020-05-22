@@ -1,0 +1,531 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15204,        522]
+NotebookOptionsPosition[     10778,        388]
+NotebookOutlinePosition[     13220,        451]
+CellTagsIndexPosition[     13135,        446]
+WindowTitle->Convert
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["AUTOMATIC UNITS SYMBOL", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Related Guides",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Related Guides", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"Automatic unit conversion\"\>":>
+       Documentation`HelpLookup["paclet:AutomaticUnits/guide/AutomaticUnits"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"MoreAbout"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"AutomaticUnits/ref/Convert\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["AutomaticUnits/ref/Convert"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/AutomaticUnits/ref/\
+Convert.html"], StandardForm]], "Input", TextClipboardType -> "PlainText"]}, 
+            Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$3864], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "AutomaticUnits/ref/Convert", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[TextData[{
+ Cell["Convert", "ObjectName"],
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{8, 0}],
+    CacheGraphics->False],
+   Spacer[8]]]],
+ Cell[BoxData[""], "ObjectNameTranslation"]
+}], "ObjectNameGrid"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[GridBox[{
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Convert", "[", 
+       RowBox[{"oldunit", ",", " ", "newunit"}], "]"}]], "InlineFormula"],
+     " \[LineSeparator]converts oldunit into a quantity in newunit."
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Convert", "[", 
+       RowBox[{"oldunit", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"newunit1", ",", "newunit2", ",", "\[Ellipsis]"}], "}"}]}], 
+       "]"}]], "InlineFormula"],
+     " \[LineSeparator]converts oldunit into the most appropriate unit from \
+the list of new units."
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Convert", "[", 
+       RowBox[{"oldunit", ",", " ", "\"\<setname\>\""}], "]"}]], 
+      "InlineFormula"],
+     " \[LineSeparator]converts oldunit into the most appropriate unit from \
+the list UnitSet[\"setname\"]."
+    }]]},
+   {"", Cell[TextData[{
+     Cell[BoxData[
+      RowBox[{"Convert", "[", 
+       RowBox[{"{", 
+        RowBox[{"unit1", ",", "unit2", ",", "\[Ellipsis]"}], "}"}], "]"}]], 
+      "InlineFormula"],
+     " \[LineSeparator]converts the list of units into a common unit."
+    }]]}
+  }]], "Usage",
+ GridBoxOptions->{
+ GridBoxBackground->{
+  "Columns" -> {{None}}, "ColumnsIndexed" -> {}, 
+   "Rows" -> {None, None, None, {None}}, "RowsIndexed" -> {}}},
+ CellID->982511436],
+
+Cell[CellGroupData[{
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[Cell[TextData[{
+   Cell[BoxData[
+    InterpretationBox[
+     StyleBox[
+      GraphicsBox[{},
+       BaselinePosition->Baseline,
+       ImageSize->{6, 0}],
+      CacheGraphics->False],
+     Spacer[6]]]],
+   "Details"
+  }], "NotesFrameText"],
+  Appearance->{Automatic, None},
+  BaseStyle->None,
+  ButtonFunction:>(FrontEndExecute[{
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], All, ButtonCell], 
+     FrontEndToken["OpenCloseGroup"], 
+     FrontEnd`SelectionMove[
+      FrontEnd`SelectedNotebook[], After, CellContents]}]& ),
+  Evaluator->None,
+  Method->"Preemptive"]]]], "NotesSection",
+ WholeCellGroupOpener->True,
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->203266077],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell["Available UnitSet names can be found using UnitSet[]", "ExampleText",
+ CellID->11311800],
+
+Cell["", "SectionFooterSpacer"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "PrimaryExamplesSection",
+ WholeCellGroupOpener->True,
+ CellTags->"PrimaryExamplesSection",
+ CellID->1793957409],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Basic Examples",
+ "\[NonBreakingSpace]\[NonBreakingSpace]",
+ Cell["(1)", "ExampleCount"]
+}], "ExampleSection", "ExampleSection",
+ WholeCellGroupOpener->True,
+ CellID->371769183],
+
+Cell["Convert units to a specified unit", "ExampleText",
+ CellID->138589504],
+
+Cell[BoxData[
+ RowBox[{"<<", "AutomaticUnits`"}]], "Input",
+ CellLabel->"In[1]:=",
+ CellID->92371781],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"67920000", " ", "Yard"}], ",", "Foot"}], "]"}]], "Input",
+ CellLabel->"In[2]:=",
+ CellID->239328551],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"203760000", " ", "Foot"}],
+  Units`Unit[203760000, "Foot"]]], "Output",
+ ImageSize->{105, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[2]=",
+ CellID->276747623]
+}, Open  ]],
+
+Cell["\<\
+Convert units to the most appropriate unit from a named UnitSet\
+\>", "ExampleText",
+ CellID->653961278],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"67920000", " ", "Yard"}], ",", "\"\<SI\>\""}], "]"}]], "Input",
+ CellLabel->"In[3]:=",
+ CellID->101196937],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"62106048", " ", "Meter"}],
+  Units`Unit[62106048, "Meter"]]], "Output",
+ ImageSize->{105, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[3]=",
+ CellID->74371698]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"67920000.", " ", "Yard"}], ",", "\"\<PrefixedSI\>\""}], 
+  "]"}]], "Input",
+ CellLabel->"In[4]:=",
+ CellID->47459045],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"0.062106048`", " ", "Gigameter"}],
+  Units`Unit[0.062106048, "Gigameter"]]], "Output",
+ ImageSize->{130, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[4]=",
+ CellID->409189943]
+}, Open  ]],
+
+Cell["\<\
+Convert a unit to the most appropriate unit from a list of choices\
+\>", "ExampleText",
+ CellID->18153593],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"20000.", " ", "Yard"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Meter", ",", " ", "Mile", ",", " ", "LightYear"}], "}"}]}], 
+  "]"}]], "Input",
+ CellLabel->"In[5]:=",
+ CellID->236980715],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"11.363636363636363`", " ", "Mile"}],
+  AutomaticUnits`Unit[11.363636363636363`, "Mile"],
+  AutoDelete->True]], "Output",
+ ImageSize->{86, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[5]=",
+ CellID->662313187]
+}, Open  ]],
+
+Cell["Convert a list of units into a common unit", "ExampleText",
+ CellID->399799875],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"5.2", "Meter"}], ",", 
+    RowBox[{"34.4", "Inch"}], ",", 
+    RowBox[{"0.5", "Mile"}]}], "}"}], "]"}]], "Input",
+ CellLabel->"In[6]:=",
+ CellID->338706005],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   InterpretationBox[
+    RowBox[{"5.2`", " ", "Meter"}],
+    Units`Unit[5.2, "Meter"]], ",", 
+   InterpretationBox[
+    RowBox[{"0.87376`", " ", "Meter"}],
+    Units`Unit[0.87376, "Meter"]], ",", 
+   InterpretationBox[
+    RowBox[{"804.672`", " ", "Meter"}],
+    Units`Unit[804.672, "Meter"]]}], "}"}]], "Output",
+ ImageSize->{279, 16},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellLabel->"Out[6]=",
+ CellID->12388956]
+}, Open  ]]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Related Guides"
+}], "MoreAboutSection",
+ WholeCellGroupOpener->True,
+ CellID->38303248],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData["Automatic unit conversion"]],
+   "paclet:AutomaticUnits/guide/AutomaticUnits"},
+  "RefLink",
+  BaseStyle->"MoreAbout"]], "MoreAbout",
+ CellID->1294729558]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Convert",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "SymbolColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Automatic unit conversion", ButtonData -> 
+         "paclet:AutomaticUnits/guide/AutomaticUnits", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "HasOptions" -> False, "ExampleCounter" -> 1, "NeedPlatMsgIn" -> 
+  None, "RootCaptions" -> "", 
+  "Metadata" -> {
+   "built" -> "{2017, 1, 30, 12, 0, 17.653977}", 
+    "history" -> {"0.0", "", "", ""}, "context" -> "AutomaticUnits`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Automatic Units Symbol", "language" -> "en", "paclet" -> 
+    "AutomaticUnits", "status" -> "None", "summary" -> 
+    "Convert[oldunit, newunit] converts oldunit into a quantity in newunit. \
+Convert[oldunit, {newunit1, newunit2, ...}] converts oldunit into the most \
+appropriate unit from the list of new units. Convert[oldunit, \"setname\"] \
+converts oldunit into the most appropriate unit from the list \
+UnitSet[\"setname\"]. Convert[{unit1, unit2, ...}] converts the list of units \
+into a common unit.", "synonyms" -> {}, "tabletags" -> {}, "title" -> 
+    "Convert", "titlemodifier" -> "", "windowtitle" -> "Convert", "type" -> 
+    "Symbol", "uri" -> "AutomaticUnits/ref/Convert"}, "SearchTextTranslated" -> 
+  ""},
+CellContext->"Global`",
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[
+    StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "Reference.nb"]]], 
+   Cell[
+    StyleData["Input"], CellContext -> "Global`"], 
+   Cell[
+    StyleData["Output"], CellContext -> "Global`"]}, Visible -> False, 
+  FrontEndVersion -> 
+  "11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September 21, 2016)", 
+  StyleDefinitions -> "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "PrimaryExamplesSection"->{
+  Cell[6295, 191, 388, 15, 70, "PrimaryExamplesSection",
+   CellTags->"PrimaryExamplesSection",
+   CellID->1793957409]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"PrimaryExamplesSection", 12991, 439}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[579, 21, 3070, 74, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[3652, 97, 284, 11, 70, "ObjectNameGrid"],
+Cell[CellGroupData[{
+Cell[3961, 112, 1357, 38, 70, "Usage",
+ CellID->982511436],
+Cell[CellGroupData[{
+Cell[5343, 154, 738, 24, 70, "NotesSection",
+ CellGroupingRules->{"SectionGrouping", 50},
+ CellID->203266077],
+Cell[6084, 180, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[6118, 182, 94, 1, 70, "ExampleText",
+ CellID->11311800],
+Cell[6215, 185, 31, 0, 70, "SectionFooterSpacer"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6295, 191, 388, 15, 70, "PrimaryExamplesSection",
+ CellTags->"PrimaryExamplesSection",
+ CellID->1793957409],
+Cell[CellGroupData[{
+Cell[6708, 210, 195, 6, 70, "ExampleSection",
+ CellID->371769183],
+Cell[6906, 218, 76, 1, 70, "ExampleText",
+ CellID->138589504],
+Cell[6985, 221, 101, 3, 70, "Input",
+ CellID->92371781],
+Cell[CellGroupData[{
+Cell[7111, 228, 163, 5, 70, "Input",
+ CellID->239328551],
+Cell[7277, 235, 247, 8, 70, "Output",
+ CellID->276747623]
+}, Open  ]],
+Cell[7539, 246, 114, 3, 70, "ExampleText",
+ CellID->653961278],
+Cell[CellGroupData[{
+Cell[7678, 253, 169, 5, 70, "Input",
+ CellID->101196937],
+Cell[7850, 260, 246, 8, 70, "Output",
+ CellID->74371698]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8133, 273, 180, 6, 70, "Input",
+ CellID->47459045],
+Cell[8316, 281, 262, 8, 70, "Output",
+ CellID->409189943]
+}, Open  ]],
+Cell[8593, 292, 116, 3, 70, "ExampleText",
+ CellID->18153593],
+Cell[CellGroupData[{
+Cell[8734, 299, 245, 8, 70, "Input",
+ CellID->236980715],
+Cell[8982, 309, 295, 9, 70, "Output",
+ CellID->662313187]
+}, Open  ]],
+Cell[9292, 321, 85, 1, 70, "ExampleText",
+ CellID->399799875],
+Cell[CellGroupData[{
+Cell[9402, 326, 237, 8, 70, "Input",
+ CellID->338706005],
+Cell[9642, 336, 484, 16, 70, "Output",
+ CellID->12388956]
+}, Open  ]]
+}, Open  ]],
+Cell[10153, 356, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10221, 361, 276, 12, 70, "MoreAboutSection",
+ CellID->38303248],
+Cell[10500, 375, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[10534, 377, 202, 6, 70, "MoreAbout",
+ CellID->1294729558]
+}, Open  ]],
+Cell[10751, 386, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)

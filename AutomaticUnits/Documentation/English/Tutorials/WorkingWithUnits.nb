@@ -1,0 +1,2097 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     71406,       2088]
+NotebookOptionsPosition[     61932,       1719]
+NotebookOutlinePosition[     62412,       1736]
+CellTagsIndexPosition[     62369,       1733]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["8.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellChangeTimes->{{3.4656341049027057`*^9, 3.4656341049027057`*^9}},
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Tutorial", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["AutomaticUnits", "Categorization",
+ CellChangeTimes->{3.4946739910789304`*^9},
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["AutomaticUnits`", "Categorization",
+ CellChangeTimes->{3.4946739927580986`*^9},
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["\<\
+AutomaticUnits/tutorial/WorkingWithUnits\
+\>", "Categorization",
+ CellChangeTimes->{{3.494673994022225*^9, 3.494673999894812*^9}},
+ CellLabel->"URI"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1427428552],
+
+Cell["units, SI, physical quantities, dimensional analysis", "Keywords",
+ CellChangeTimes->{{3.4656340414639874`*^9, 3.4656340689645157`*^9}},
+ CellID->1251852827]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection",
+ CellID->307771771],
+
+Cell["jonm", "Details",
+ CellChangeTimes->{{3.4656340945275064`*^9, 3.465634094777511*^9}},
+ CellLabel->"Lead",
+ CellID->218895918],
+
+Cell["jonm", "Details",
+ CellChangeTimes->{{3.4656340747146263`*^9, 3.465634075011507*^9}},
+ CellLabel->"Developers",
+ CellID->350963985],
+
+Cell["jonm", "Details",
+ CellChangeTimes->{{3.46563407726155*^9, 3.4656340775271797`*^9}},
+ CellLabel->"Authors",
+ CellID->795871300],
+
+Cell["XXXX", "Details",
+ CellLabel->"Feature Name",
+ CellID->199739161],
+
+Cell["XXXX", "Details",
+ CellLabel->"QA",
+ CellID->40625308],
+
+Cell["XXXX", "Details",
+ CellLabel->"DA",
+ CellID->357121918],
+
+Cell["XXXX", "Details",
+ CellLabel->"Docs",
+ CellID->35949532],
+
+Cell["XXXX", "Details",
+ CellLabel->"Features Page Notes",
+ CellID->929432370],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments",
+ CellID->240026365]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Working with units", "Title",
+ CellID->509267359],
+
+Cell["\<\
+The AutomaticUnits package provides capabilities for working with phyisical \
+quantities associated with various units.\
+\>", "Text",
+ CellChangeTimes->{{3.4656341959200783`*^9, 3.465634251030511*^9}, {
+  3.4997615940959597`*^9, 3.499761612958039*^9}, {3.499771288848897*^9, 
+  3.499771288849897*^9}},
+ CellID->1534169418],
+
+Cell["\<\
+Its aim is to automate both the conversions between different unit values and \
+also to ensure dimensional compatibilitity.\
+\>", "Text",
+ CellChangeTimes->{{3.49977135289356*^9, 3.4997713686054583`*^9}},
+ CellID->451027693],
+
+Cell["\<\
+Over 1000 different units are supported.\
+\>", "Text",
+ CellChangeTimes->{{3.4997730158042097`*^9, 3.499773017167288*^9}},
+ CellID->393336728],
+
+Cell[CellGroupData[{
+
+Cell["Load the units package first.", "MathCaption",
+ CellChangeTimes->{{3.465634258655658*^9, 3.465634284093646*^9}},
+ CellID->39669634],
+
+Cell[BoxData[
+ RowBox[{"<<", "AutomaticUnits`"}]], "Input",
+ CellChangeTimes->{{3.4592467979016256`*^9, 3.45924681976128*^9}, {
+   3.4592495239833937`*^9, 3.4592495257959175`*^9}, 3.494674004584281*^9},
+ CellLabel->"In[1]:=",
+ CellID->162445633]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Calculations involving units will automatically convert arguments into a \
+suitable common default unit. In most cases the default is SI units.\
+\>", "Text",
+ CellChangeTimes->{{3.459249561905754*^9, 3.459249580062237*^9}, {
+  3.4656343091097517`*^9, 3.465634365282705*^9}, {3.465634408486659*^9, 
+  3.465634417033698*^9}, {3.465634472941022*^9, 3.465634473941041*^9}, {
+  3.4997616454208956`*^9, 3.499761650621193*^9}},
+ CellID->455065023],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"10.5", "Meter"}], "+", 
+  RowBox[{"14", " ", "Inch"}]}]], "Input",
+ CellChangeTimes->{{3.459246862871207*^9, 3.459246865136861*^9}, {
+  3.465634301484605*^9, 3.4656343016721087`*^9}, {3.499761675306605*^9, 
+  3.4997616781857696`*^9}},
+ CellLabel->"In[2]:=",
+ CellID->243635183],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"10.8556`", " ", "Meter"}],
+  AutomaticUnits`Unit[10.8556, "Meter"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{
+  3.4592468656993685`*^9, 3.4632246728686805`*^9, 3.4632253579544907`*^9, 
+   3.463225582975236*^9, {3.4656342993126884`*^9, 3.465634302453374*^9}, {
+   3.499761671307376*^9, 3.499761678785804*^9}, 3.4997624742032995`*^9, 
+   3.4997730250297375`*^9, 3.499773177919482*^9, 3.4997733921667366`*^9, 
+   3.5002006803674383`*^9, 3.50020346302395*^9},
+ CellLabel->"Out[2]=",
+ CellID->449583942]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+No conversion will be performed if quantities are already in a common unit \
+system\
+\>", "Text",
+ CellChangeTimes->{{3.459249561905754*^9, 3.459249580062237*^9}, {
+  3.4656343091097517`*^9, 3.465634365282705*^9}, {3.465634408486659*^9, 
+  3.465634417033698*^9}, {3.465634472941022*^9, 3.465634473941041*^9}, {
+  3.4997616454208956`*^9, 3.499761650621193*^9}, {3.500200657042106*^9, 
+  3.5002006764500465`*^9}},
+ CellID->135355214],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"37", " ", "Yard"}], "+", 
+  RowBox[{"12", " ", "Yard"}]}]], "Input",
+ CellChangeTimes->{{3.500200682420644*^9, 3.500200687822184*^9}},
+ CellLabel->"In[3]:=",
+ CellID->509966676],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"49", " ", "Yard"}],
+  AutomaticUnits`Unit[49, "Yard"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{3.500200688951297*^9, 3.500203463044952*^9},
+ CellLabel->"Out[3]=",
+ CellID->480934068]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Where input units are not dimensionally compatible, no computation will be \
+performed.\
+\>", "Text",
+ CellChangeTimes->{{3.459249561905754*^9, 3.459249580062237*^9}, {
+  3.4656343091097517`*^9, 3.4656344380809774`*^9}, {3.465634533129678*^9, 
+  3.4656345509425197`*^9}, {3.500200696475049*^9, 3.500200698059208*^9}},
+ CellID->117531886],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Day", " ", "+", " ", "Inch"}]], "Input",
+ CellChangeTimes->{{3.4592475728802953`*^9, 3.459247578474117*^9}},
+ CellLabel->"In[4]:=",
+ CellID->181029488],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Unit", "::", "incomp1"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Units \[NoBreak]\\!\\({\\*InterpretationBox[\\\"Day\\\", \
+Unit[1, \\\"Day\\\"], Rule[AutoDelete, True]], \
+\\*InterpretationBox[\\\"Inch\\\", Unit[1, \\\"Inch\\\"], Rule[AutoDelete, \
+True]]}\\)\[NoBreak] are not compatible \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:AutomaticUnits/ref/Unit\\\", ButtonNote -> \
+\\\"AutomaticUnits`Unit::incomp1\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.459247578802246*^9, 3.459247853821391*^9, 
+  3.459249794674359*^9, 3.463224673055835*^9, 3.4632253581732097`*^9, 
+  3.463225583240868*^9, 3.499761906734842*^9, 3.4997624742263002`*^9, 
+  3.4997730250517387`*^9, 3.499773177971485*^9, 3.4997733922007384`*^9, 
+  3.500203463105958*^9},
+ CellLabel->"During evaluation of In[4]:=",
+ CellID->131643093],
+
+Cell[BoxData[
+ RowBox[{
+  InterpretationBox["Day",
+   AutomaticUnits`Unit[1, "Day"],
+   AutoDelete->True], "+", 
+  InterpretationBox["Inch",
+   AutomaticUnits`Unit[1, "Inch"],
+   AutoDelete->True]}]], "Output",
+ CellChangeTimes->{3.459249794674359*^9, 3.4632246730870275`*^9, 
+  3.4632253582044554`*^9, 3.463225583287744*^9, 3.499761906759843*^9, 
+  3.4997624742323008`*^9, 3.49977302507774*^9, 3.4997731779754853`*^9, 
+  3.4997733922047386`*^9, 3.500203463115959*^9},
+ CellLabel->"Out[4]=",
+ CellID->118571559]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Composite units can be used by multiplying powers of units, and will also be \
+handled automatically.\
+\>", "Text",
+ CellChangeTimes->{{3.459249606171946*^9, 3.4592496130470343`*^9}, {
+  3.465634657850822*^9, 3.4656346909920835`*^9}},
+ CellID->593106573],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2.5", " ", "Atmosphere", " ", "Acre"}], "+", 
+  RowBox[{"4", "*", 
+   SuperscriptBox["10", "7"], " ", 
+   InterpretationBox[
+    RowBox[{"Kilogram", "Meter", 
+     SuperscriptBox["Second", 
+      RowBox[{"-", "2"}]]}],
+    AutomaticUnits`Unit[1, ("Kilogram" "Meter") "Second"^(-2)],
+    AutoDelete->True]}]}]], "Input",
+ CellChangeTimes->{{3.45924688887154*^9, 3.459246922840725*^9}, {
+  3.465634608990509*^9, 3.465634641022374*^9}, {3.4997619488792524`*^9, 
+  3.499761975605781*^9}, {3.500200740607462*^9, 3.500200747351136*^9}},
+ CellLabel->"In[5]:=",
+ CellID->182662268],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"1.0651193174992`*^9", " ", "Newton"}],
+  AutomaticUnits`Unit[1.0651193174992*^9, "Newton"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{{3.4592469075905294`*^9, 3.4592469234969835`*^9}, 
+   3.4632246729154687`*^9, 3.463225358001359*^9, 3.463225583006487*^9, 
+   3.4650219323289485`*^9, {3.4656346200532217`*^9, 3.465634641241128*^9}, {
+   3.499761950153325*^9, 3.4997619766808424`*^9}, 3.499762474268303*^9, 
+   3.4997730251077423`*^9, 3.4997731780104876`*^9, 3.49977339223174*^9, {
+   3.5002007417515764`*^9, 3.5002007475951605`*^9}, 3.500203463145962*^9},
+ CellLabel->"Out[5]=",
+ CellID->346820915]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+SimplifyUnits will try to find simpler equivelents to composite units.\
+\>", "Text",
+ CellChangeTimes->{{3.4592496892511344`*^9, 3.4592496967668557`*^9}, {
+  3.4656347156488066`*^9, 3.4656347394617643`*^9}, {3.4997729395848503`*^9, 
+  3.49977294063391*^9}},
+ CellID->143597925],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SimplifyUnits", "[", 
+  RowBox[{"0.1", " ", "Atmosphere", " ", "Acre"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592468734807177`*^9, 3.4592468863715076`*^9}, {
+  3.4997729427220297`*^9, 3.4997729713586674`*^9}},
+ CellLabel->"In[6]:=",
+ CellID->303770721],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"4.1004772699968`*^7", " ", "Newton"}],
+  AutomaticUnits`Unit[4.1004772699968*^7, "Newton"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{{3.4592468789964137`*^9, 3.4592468867152624`*^9}, 
+   3.463224672977854*^9, 3.463225358032604*^9, 3.463225583037738*^9, 
+   3.4650219350163627`*^9, 3.4656347006328936`*^9, 3.4997619937658195`*^9, 
+   3.4997624742973046`*^9, {3.4997729597970066`*^9, 3.4997729723557243`*^9}, 
+   3.4997730251357436`*^9, 3.4997731780524898`*^9, 3.4997733922587414`*^9, 
+   3.500203463174965*^9},
+ CellLabel->"Out[6]=",
+ CellID->14375456]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Most operators, for which unit based quanties make sense, will automatically \
+handle units.\
+\>", "Text",
+ CellChangeTimes->{{3.4592499146758947`*^9, 3.45924992797294*^9}, {
+  3.4656347840563703`*^9, 3.4656348101193705`*^9}, {3.4997620340311227`*^9, 
+  3.4997620351101847`*^9}},
+ CellID->150389627],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"2000", " ", "Meter"}], ">", 
+  RowBox[{"1.2", " ", "Mile"}]}]], "Input",
+ CellChangeTimes->{{3.459246966841288*^9, 3.4592469828414927`*^9}},
+ CellLabel->"In[7]:=",
+ CellID->215662077],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.459246983310249*^9, 3.463224673165008*^9, 
+  3.463225358313815*^9, 3.4632255834439983`*^9, 3.4997620395094357`*^9, 
+  3.4997624743273067`*^9, 3.4997730251657453`*^9, 3.499773178089492*^9, 
+  3.499773392286743*^9, 3.5002034632069683`*^9},
+ CellLabel->"Out[7]=",
+ CellID->78692310]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sort", "[", 
+  RowBox[{"{", 
+   RowBox[{"Foot", ",", " ", "Inch", ",", " ", "Mile", ",", " ", 
+    RowBox[{"200", " ", "Yard"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592469914978533`*^9, 3.4592470128106265`*^9}},
+ CellLabel->"In[8]:=",
+ CellID->73072765],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   InterpretationBox["Inch",
+    AutomaticUnits`Unit[1, "Inch"],
+    AutoDelete->True], ",", 
+   InterpretationBox["Foot",
+    AutomaticUnits`Unit[1, "Foot"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"200", " ", "Yard"}],
+    AutomaticUnits`Unit[200, "Yard"],
+    AutoDelete->True], ",", 
+   InterpretationBox["Mile",
+    AutomaticUnits`Unit[1, "Mile"],
+    AutoDelete->True]}], "}"}]], "Output",
+ CellChangeTimes->{{3.459247008138692*^9, 3.459247013107505*^9}, 
+   3.4632246732117968`*^9, 3.4632253583450603`*^9, 3.463225583475249*^9, 
+   3.4650219488752937`*^9, 3.499762040842512*^9, 3.499762474355308*^9, 
+   3.4997730252897525`*^9, 3.499773178120494*^9, 3.4997733923117447`*^9, 
+   3.5002034632329707`*^9},
+ CellLabel->"Out[8]=",
+ CellID->238195615]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Max", "[", 
+  RowBox[{"{", 
+   RowBox[{"Foot", ",", " ", "Inch", ",", " ", "Mile", ",", " ", 
+    RowBox[{"200", " ", "Yard"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592469914978533`*^9, 3.4592470128106265`*^9}, {
+  3.5002008352909293`*^9, 3.500200835610961*^9}},
+ CellLabel->"In[9]:=",
+ CellID->4819519],
+
+Cell[BoxData[
+ InterpretationBox["Mile",
+  AutomaticUnits`Unit[1, "Mile"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{{3.459247008138692*^9, 3.459247013107505*^9}, 
+   3.4632246732117968`*^9, 3.4632253583450603`*^9, 3.463225583475249*^9, 
+   3.4650219488752937`*^9, 3.499762040842512*^9, 3.499762474355308*^9, 
+   3.4997730252897525`*^9, 3.499773178120494*^9, 3.4997733923117447`*^9, 
+   3.5002008361490154`*^9, 3.500203463262974*^9},
+ CellLabel->"Out[9]=",
+ CellID->320830245]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"30", " ", "x"}], "+", 
+     RowBox[{"200", " ", "Meter"}]}], "\[Equal]", 
+    RowBox[{"100.", "Foot"}]}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.459247021138858*^9, 3.459247040107851*^9}, 
+   3.499762051103099*^9},
+ CellLabel->"In[10]:=",
+ CellID->72661458],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"x", "\[Rule]", 
+    InterpretationBox[
+     RowBox[{
+      RowBox[{"-", "5.650666666666667`"}], " ", "Meter"}],
+     AutomaticUnits`Unit[-5.650666666666667, "Meter"],
+     AutoDelete->True]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.4592470406703577`*^9, 3.46322467332097*^9, 3.4632253584700427`*^9, 
+   3.4632255836158776`*^9, 3.4650219569531603`*^9, {3.4997620459708056`*^9, 
+   3.4997620514581194`*^9}, 3.49976247438431*^9, 3.499773025318754*^9, 
+   3.499773178161496*^9, 3.499773392347747*^9, 3.5002034633059783`*^9},
+ CellLabel->"Out[10]=",
+ CellID->18342375]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Reduce", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"30", " ", "x"}], "+", 
+     RowBox[{"200", " ", "Meter"}]}], "\[Equal]", 
+    RowBox[{"100.", "Foot"}]}], ",", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592470905616217`*^9, 3.4592470914991336`*^9}, 
+   3.4997620604806356`*^9},
+ CellLabel->"In[11]:=",
+ CellID->190002597],
+
+Cell[BoxData[
+ RowBox[{"x", "\[Equal]", 
+  InterpretationBox[
+   RowBox[{
+    RowBox[{"-", "5.650666666666667`"}], " ", "Meter"}],
+   AutomaticUnits`Unit[-5.650666666666667, "Meter"],
+   AutoDelete->True]}]], "Output",
+ CellChangeTimes->{3.459247091842888*^9, 3.4632246733677588`*^9, 
+  3.4632253585169115`*^9, 3.463225583647128*^9, 3.465021958218745*^9, 
+  3.4997620610216665`*^9, 3.499762474413311*^9, 3.4997730253477554`*^9, 
+  3.499773178194498*^9, 3.499773392374748*^9, 3.5002034633409815`*^9},
+ CellLabel->"Out[11]=",
+ CellID->133033454]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Some data constructors can support ranges or intervals using unit based \
+quanties. For example, here we generate 10 random quantities between 1 Yard \
+and 1 Meter...\
+\>", "Text",
+ CellChangeTimes->{{3.459249988270587*^9, 3.45924998891122*^9}, {
+  3.460197719423879*^9, 3.460197744924206*^9}, {3.46563495201272*^9, 
+  3.4656349679192753`*^9}, {3.4997714318630767`*^9, 3.4997714690672045`*^9}},
+ CellID->146130433],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RandomReal", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"Yard", ",", "Meter"}], "}"}], ",", 
+   RowBox[{"{", "10", "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592473556275144`*^9, 3.459247367940172*^9}},
+ CellLabel->"In[12]:=",
+ CellID->55464079],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   InterpretationBox[
+    RowBox[{"0.9853228728921918`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.9853228728921918, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.9660272211774693`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.9660272211774693, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.9889006775136622`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.9889006775136622, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.9220133445613915`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.9220133445613915, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.9673221566624001`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.9673221566624001, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.984160284588269`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.984160284588269, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.9581990670657083`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.9581990670657083, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.9427317902946017`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.9427317902946017, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.933564639438164`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.933564639438164, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"0.9380310713974996`", " ", "Meter"}],
+    AutomaticUnits`Unit[0.9380310713974996, "Meter"],
+    AutoDelete->True]}], "}"}]], "Output",
+ CellChangeTimes->{3.459247368315177*^9, 3.4632246732429895`*^9, 
+  3.463225358376306*^9, 3.4632255835064993`*^9, 3.4650219504846177`*^9, 
+  3.4997620721873055`*^9, 3.499762474441313*^9, 3.4997730253737574`*^9, 
+  3.4997731782254996`*^9, 3.4997733924057503`*^9, 3.500203463374985*^9},
+ CellLabel->"Out[12]=",
+ CellID->395564590]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Range", "[", 
+  RowBox[{"10", " ", "Meter"}], "]"}]], "Input",
+ CellChangeTimes->{{3.459249997739458*^9, 3.4592499998957357`*^9}},
+ CellLabel->"In[13]:=",
+ CellID->46634454],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   InterpretationBox["Meter",
+    AutomaticUnits`Unit[1, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"2", " ", "Meter"}],
+    AutomaticUnits`Unit[2, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"3", " ", "Meter"}],
+    AutomaticUnits`Unit[3, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"4", " ", "Meter"}],
+    AutomaticUnits`Unit[4, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"5", " ", "Meter"}],
+    AutomaticUnits`Unit[5, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"6", " ", "Meter"}],
+    AutomaticUnits`Unit[6, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"7", " ", "Meter"}],
+    AutomaticUnits`Unit[7, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"8", " ", "Meter"}],
+    AutomaticUnits`Unit[8, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"9", " ", "Meter"}],
+    AutomaticUnits`Unit[9, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"10", " ", "Meter"}],
+    AutomaticUnits`Unit[10, "Meter"],
+    AutoDelete->True]}], "}"}]], "Output",
+ CellChangeTimes->{3.459250000161364*^9, 3.463224673258585*^9, 
+  3.4632253583919287`*^9, 3.4632255835377502`*^9, 3.465021952812668*^9, 
+  3.4997620791297026`*^9, 3.4997624744673147`*^9, 3.4997730253957586`*^9, 
+  3.499773178250501*^9, 3.499773392430752*^9, 3.500203463402988*^9},
+ CellLabel->"Out[13]=",
+ CellID->82484754]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Or generate values beween 10 Meters and 13 Yards in 1 Foot steps.\
+\>", "Text",
+ CellChangeTimes->{{3.459249988270587*^9, 3.45924998891122*^9}, {
+  3.460197719423879*^9, 3.460197744924206*^9}, {3.46563495201272*^9, 
+  3.4656349679192753`*^9}, {3.4997714318630767`*^9, 3.4997715090884933`*^9}},
+ CellID->497717032],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Range", "[", 
+  RowBox[{
+   RowBox[{"10.", " ", "Meter"}], ",", " ", 
+   RowBox[{"13", " ", "Yard"}], ",", " ", "Foot"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592500012863784`*^9, 3.4592500354743156`*^9}, 
+   3.4997620886172447`*^9},
+ CellLabel->"In[14]:=",
+ CellID->516590723],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   InterpretationBox[
+    RowBox[{"10.`", " ", "Meter"}],
+    AutomaticUnits`Unit[10., "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"10.3048`", " ", "Meter"}],
+    AutomaticUnits`Unit[10.3048, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"10.6096`", " ", "Meter"}],
+    AutomaticUnits`Unit[10.6096, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"10.9144`", " ", "Meter"}],
+    AutomaticUnits`Unit[10.9144, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"11.2192`", " ", "Meter"}],
+    AutomaticUnits`Unit[11.2192, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"11.524000000000001`", " ", "Meter"}],
+    AutomaticUnits`Unit[11.524000000000001`, "Meter"],
+    AutoDelete->True], ",", 
+   InterpretationBox[
+    RowBox[{"11.8288`", " ", "Meter"}],
+    AutomaticUnits`Unit[11.8288, "Meter"],
+    AutoDelete->True]}], "}"}]], "Output",
+ CellChangeTimes->{{3.4592500078333373`*^9, 3.4592500356930685`*^9}, 
+   3.4632246732897778`*^9, 3.463225358438797*^9, 3.463225583569001*^9, 
+   3.4650219217980356`*^9, 3.4650219543594933`*^9, {3.499762083305941*^9, 
+   3.499762089071271*^9}, 3.4997624745023165`*^9, 3.4997730254497614`*^9, 
+   3.4997731782905035`*^9, 3.4997733924697537`*^9, 3.5002034634439917`*^9},
+ CellLabel->"Out[14]=",
+ CellID->110745604]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Many plotting routines will handle units, and will usually display the \
+resulting units as AxesLabels.\
+\>", "Text",
+ CellChangeTimes->{{3.4592495898279867`*^9, 3.459249598359346*^9}, {
+  3.4656350337017884`*^9, 3.4656351091251116`*^9}, {3.4656351430788884`*^9, 
+  3.4656351690950127`*^9}},
+ CellID->613641842],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListLinePlot", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"300", " ", "Inch"}], ",", 
+    RowBox[{"10", " ", "Meter"}], ",", 
+    RowBox[{"10", " ", "Yard"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592473276584063`*^9, 3.4592473434554834`*^9}, {
+  3.465635189048521*^9, 3.4656352048456993`*^9}},
+ CellLabel->"In[15]:=",
+ CellID->468291384],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {Hue[0.67, 0.6, 0.6], LineBox[{{1., 7.62}, {2., 10.}, {3., 9.144}}]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->FormBox[
+    InterpretationBox[
+     TooltipBox[
+      StyleBox["m", ShowAutoStyles -> False], "Meter", LabelStyle -> 
+      "TextStyling"], 
+     AutomaticUnits`Unit[1, "Meter"], AutoDelete -> True], TraditionalForm],
+  AxesOrigin->{0, 8.},
+  PlotRange->{{0, 3.}, {7.62, 10.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{
+  3.4592473437679873`*^9, 3.4601942856155186`*^9, 3.460194666664832*^9, 
+   3.463224673539317*^9, 3.46322535856378*^9, 3.463225583694004*^9, 
+   3.46502195993744*^9, {3.465635186032838*^9, 3.46563520514258*^9}, 
+   3.4997620979947815`*^9, 3.499762474537318*^9, 3.499773025497764*^9, 
+   3.4997731783325057`*^9, 3.499773392510756*^9, 3.500203463487996*^9},
+ CellLabel->"Out[15]=",
+ CellID->375226892]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"x", "^", "2"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"3", " ", "Foot"}], ",", " ", 
+     RowBox[{"3", " ", "Meter"}]}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4651216358509383`*^9, 3.4651216576634383`*^9}},
+ CellLabel->"In[16]:=",
+ CellID->543651737],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, 
+   {Hue[0.67, 0.6, 0.6], LineBox[CompressedData["
+1:eJwVzms01GkcwPG58d/k0jSIZibzZJ1S6GgHbVuen2lKWimXsE2pTZhK2hjT
+qkVIVBqtdVvbVa5pE7V7VrlXtiKL0DlysopoNHKZi5kxM9u++J7P2y86cCwg
+gkIikbZ/7n+bSp/++4gnw50fbIMkLVJcq9rrT94qw7XpwkNftktxic9si+d2
+GY6NXuBe3yvFmTL2zboQGc5aylNMjUlxgFtcRHW0DK9SSxYeM5/AI4/Z0qJ8
+GaY05xc0CCawyUjs7HGpDLuKwpxLVBM4aDnbmJMziWPFnTsKuDJ8d+BUfo3u
+Ey5dkB4Srv2EpyPPVOZVTOGifOE1Zug0ZusFK/V+0/iBZw7jQN0Mdrr3154U
+6gwu9lrX985bjsvSncrnqmZw3jPXgRXPFZgmdig/f2AWbzVbxRX+pMKKtGrv
+p1ZyTJtr2J3jrsY7q3fq1fVyXOc4ols5rMHZc+LDW2IV2D6ASXNsmsfr9t3/
+eJapxNY1zZFvL+ix6F2qRVyLEjPbB29lu5AgN71/LCFehbNszqRK1pLBbrNX
+v4g9h6d6u8K2OVHg4nLXk+dfzuGzgg77Nh4VJOzaxm/PqvHXt40VC/bQQOO2
+zZbsrMFLWtdYfn/ICHyioxy7P39EximOOucZA7X5tx1557U4Cb3hcO8TcN11
+12qR1zwOfn3YmT77BXQ1XyvXy+exXVhjKJ1rAkeOktcnXtbhblcKXI9cCB88
+xlOsA/S4mKprq39gCj1274duavW4lzVkKzGYgZ9D/JvBGwY8MhFf1cm3gOAS
+vo/NahI0KD1KS4IXwUP+bpcNySQoaVSujKbQgS5aG3N0gAThHr5PTjfTwXVt
+YJL8KzK8cr7jtSh5MRgnJ/8an0EG60tmD4K4DHixO8aC9pYMWJwc2DLPAJ8n
+wktZ7hT4Lvyip/ihJWQ3Vg0fPkcBEW30fkeCFbRtqbkY/I4CkisF4xxfa7i3
+t5W/wYMK5YJzPTLGEviZmh+8JocKTZksc+HUEnBYFx/HGqOCsG/ylazFBlK1
+l/fvW08DkWhj1KMcW+jenlFRnUsDx4zMN6yEpdDnkqhVj9Mguv/ErppAJrRf
+dav05xvBq64Jxkk+Cy5ccV9huGIEd4bclH1cNpBWb7pbNm0EIc+UvAKbZRDl
+vThX4GsMt5kbsZBhB2kzH1NNbhhDRU3naCGJA0KnRTwLuTE4abLCB8QcwAqF
+APkRsK1M/qe5mgMdvmOnnYsJGA7dEhwiQtDU1/G85CYBDezKhhQxgtqwWktW
+KQH9p2K8b/+IoPCHxAqTCgIaqaiVnIjgYC6ja+x3AoQ8h6A76Qh0r7FdcR0B
+nFO3pGYFCFyOFDZYdxNgN1A+/L4OAZInEpIeAn5p25tnVY/AMjHc36iXAL6v
++Ai/EYFG4jI620/AHvt/kopbEbTVPjbtHiQggsTh7W9HEKaZElwYJ+B1vOc3
+bwcR+Kf1l1KkBDCVbCvGEAK+af2nhAkCCi320/nDCFYty0gTThKw1dz0eNko
+AqUXu2qznICU9dQX0ZMIPjynKOoVBJSfUdVdnUIwGDjuyVURYCL0e9Y1g6A1
+4l7Pcg0B6Rr7HW4qBH9MFrKKtARcrSx+EqVGUHEiKZKuI0A+nRZWpEVwmXTw
+bqaegMyXf9u+0CHIPuejMRgICPWLURkMCP4DWS80YA==
+     "]]}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{
+    FormBox[
+     InterpretationBox[
+      TooltipBox[
+       StyleBox["m", ShowAutoStyles -> False], "Meter", LabelStyle -> 
+       "TextStyling"], 
+      AutomaticUnits`Unit[1, "Meter"], AutoDelete -> True], TraditionalForm], 
+    FormBox[
+     InterpretationBox[
+      SuperscriptBox[
+       TooltipBox[
+        StyleBox["m", ShowAutoStyles -> False], "Meter", LabelStyle -> 
+        "TextStyling"], "2"], 
+      AutomaticUnits`Unit[1, "Meter"^2], AutoDelete -> True], 
+     TraditionalForm]},
+  AxesOrigin->{1., 0},
+  PlotRange->NCache[{{
+      Rational[1143, 1250], 3}, {0., 8.99999974462041}}, {{0.9144, 3}, {0., 
+     8.99999974462041}}],
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{{3.4651216514134383`*^9, 3.4651216578196883`*^9}, 
+   3.49976210059793*^9, 3.4997624745833206`*^9, 3.499773025560768*^9, 
+   3.49977317840951*^9, 3.4997733925837603`*^9, 3.500203463553003*^9},
+ CellLabel->"Out[16]=",
+ CellID->779506146]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"RandomReal", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"3.", " ", "Foot"}], ",", 
+          RowBox[{"500", " ", "Yard"}]}], "}"}], ",", 
+        RowBox[{"{", "40", "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"RandomReal", "[", 
+       RowBox[{
+        RowBox[{"3", " ", "Week"}], ",", 
+        RowBox[{"{", "40", "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"RandomReal", "[", 
+       RowBox[{
+        RowBox[{"3", " ", "Farad"}], ",", 
+        RowBox[{"{", "40", "}"}]}], "]"}]}], "}"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"ListContourPlot", "[", "data", "]"}]}], "Input",
+ CellChangeTimes->{{3.4601907489414787`*^9, 3.4601907866758537`*^9}, {
+  3.4601908785196037`*^9, 3.4601908818321037`*^9}, {3.460191033942298*^9, 
+  3.4601910371923184`*^9}, {3.465636367383644*^9, 3.465636457041616*^9}},
+ CellLabel->"In[17]:=",
+ CellID->8657587],
+
+Cell[BoxData[
+ GraphicsBox[GraphicsComplexBox[CompressedData["
+1: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
+zrYVP/w/ryJfig==
+   "], {{{}, 
+     {RGBColor[0.3488805005137499, 0.15384218737296287`, 0.6073740651796322], 
+      EdgeForm[None], 
+      GraphicsGroupBox[
+       PolygonBox[{{41, 20, 51}, {101, 20, 168}, {48, 6, 152}, {112, 20, 
+        41}, {162, 6, 48}, {168, 20, 112}, {63, 6, 162}, {114, 20, 121}, {51, 
+        20, 114}, {60, 6, 141}, {121, 20, 101}, {141, 6, 63}, {152, 6, 
+        60}}]]}, 
+     {RGBColor[0.48944343121471046`, 0.3982431627337571, 0.8049522686006068], 
+      EdgeForm[None], 
+      GraphicsGroupBox[{
+        PolygonBox[{{170, 2, 62}, {131, 23, 97}, {102, 11, 89}, {97, 23, 
+         154}, {89, 11, 90}, {154, 23, 131}, {85, 2, 100}, {100, 2, 170}}], 
+        PolygonBox[{{168, 34, 11, 101}, {90, 11, 34, 76}, {61, 60, 141, 
+         142}, {113, 112, 41, 42}, {52, 51, 114, 115}, {64, 63, 162, 163}, {
+         42, 41, 51, 52}, {115, 114, 121, 122}, {142, 141, 63, 64}, {163, 162,
+          48, 49}, {76, 34, 2, 85}, {49, 48, 152, 153}, {153, 152, 60, 61}, {
+         62, 2, 34, 169}}], 
+        PolygonBox[{{122, 121, 101, 11, 102}, {169, 34, 168, 112, 113}}]}]}, 
+     {RGBColor[0.6124825184535139, 0.6057511694141665, 0.9106080770843838], 
+      EdgeForm[None], 
+      GraphicsGroupBox[{
+        PolygonBox[{{145, 27, 43}, {138, 24, 73}, {43, 27, 95}, {119, 36, 
+         54}, {45, 9, 82}, {130, 29, 134}, {174, 24, 138}, {28, 30, 39}, {36, 
+         39, 30}, {66, 8, 108}, {136, 24, 174}, {110, 16, 139}, {72, 10, 
+         70}, {134, 29, 148}, {169, 7, 62}, {27, 29, 9}, {176, 10, 72}, {171, 
+         36, 53}, {7, 31, 36}, {164, 30, 155}, {31, 39, 36}, {32, 31, 8}, {
+         160, 36, 119}, {126, 16, 74}, {108, 8, 106}, {54, 36, 156}, {53, 36, 
+         160}, {74, 16, 110}, {73, 24, 80}, {31, 28, 39}, {113, 7, 169}, {80, 
+         24, 181}}], 
+        PolygonBox[{{159, 31, 32, 65}, {132, 131, 97, 98}, {52, 8, 31, 42}, {
+         42, 31, 7, 113}, {62, 7, 35, 170}, {163, 32, 8, 64}, {170, 35, 16, 
+         100}, {95, 27, 9, 68}, {181, 24, 10, 176}, {61, 30, 28, 153}, {91, 
+         90, 76, 77}, {148, 29, 27, 145}, {156, 36, 30, 164}, {70, 10, 24, 
+         136}, {151, 28, 31, 159}, {116, 115, 122, 123}, {82, 9, 29, 46}, {
+         123, 122, 102, 103}, {77, 76, 85, 86}}], 
+        PolygonBox[{{98, 97, 154, 29, 130}, {103, 102, 89, 16, 126}, {157, 30,
+          61, 142, 143}, {50, 49, 153, 28, 151}, {57, 16, 89, 90, 91}, {46, 
+         29, 154, 131, 132}, {86, 85, 100, 16, 57}, {143, 142, 64, 8, 66}, {
+         106, 8, 52, 115, 116}, {65, 32, 163, 49, 50}}]}]}, 
+     {RGBColor[0.7158287976407641, 0.7717998836600303, 0.9129640539389628], 
+      EdgeForm[None], 
+      GraphicsGroupBox[{
+        PolygonBox[{{166, 33, 185}, {151, 4, 50}, {130, 37, 98}, {50, 4, 
+         65}, {65, 4, 159}, {184, 26, 118}, {164, 33, 156}, {159, 4, 151}}], 
+        PolygonBox[{{96, 95, 68, 69}, {92, 91, 77, 78}, {149, 148, 145, 
+         146}, {71, 70, 136, 137}, {58, 57, 91, 92}, {104, 103, 126, 127}, {
+         161, 160, 119, 120}, {120, 119, 54, 55}, {44, 43, 95, 96}, {80, 26, 
+         12, 73}, {146, 145, 43, 44}, {185, 33, 26, 184}, {127, 126, 74, 
+         75}, {73, 12, 1, 138}, {87, 86, 57, 58}, {158, 157, 143, 144}, {135, 
+         134, 148, 149}, {124, 123, 103, 104}, {138, 1, 37, 174}, {107, 106, 
+         116, 117}, {94, 37, 1, 84}, {144, 143, 66, 67}, {83, 82, 46, 47}, {
+         155, 26, 33, 164}, {78, 77, 86, 87}, {117, 116, 123, 124}, {47, 46, 
+         132, 133}, {84, 1, 12, 81}, {182, 181, 176, 177}}], 
+        PolygonBox[{{67, 66, 108, 18, 99}, {133, 132, 98, 37, 94}, {173, 37, 
+         53, 160, 161}, {118, 26, 72, 70, 71}, {75, 74, 110, 18, 109}, {137, 
+         136, 174, 37, 173}, {55, 54, 156, 33, 166}, {177, 176, 72, 26, 
+         179}, {109, 18, 108, 106, 107}, {99, 18, 110, 139, 140}, {172, 171, 
+         53, 37, 175}, {175, 37, 130, 134, 135}, {179, 26, 80, 181, 182}, {81,
+          12, 45, 82, 83}}]}]}, 
+     {RGBColor[0.8134114186984065, 0.863931916543746, 0.891281417929104], 
+      EdgeForm[None], 
+      GraphicsGroupBox[{
+        PolygonBox[{{140, 25, 99}, {107, 17, 109}, {175, 19, 172}, {109, 17, 
+         75}, {81, 13, 84}, {84, 13, 94}, {71, 5, 118}, {94, 13, 133}, {184, 
+         40, 185}, {69, 3, 96}, {83, 13, 81}, {135, 19, 175}, {137, 5, 71}, {
+         99, 25, 67}, {67, 25, 144}, {173, 5, 137}, {117, 17, 107}, {133, 13, 
+         47}, {161, 5, 173}, {47, 13, 83}, {144, 25, 158}}], 
+        PolygonBox[{{118, 5, 40, 184}, {93, 92, 78, 79}, {59, 58, 92, 93}, {
+         105, 104, 127, 128}, {180, 179, 182, 183}, {150, 149, 146, 147}, {88,
+          87, 58, 59}, {178, 177, 179, 180}, {183, 182, 177, 178}, {96, 3, 19,
+          44}, {79, 78, 87, 88}, {125, 124, 104, 105}, {56, 55, 166, 167}, {
+         120, 40, 5, 161}}], 
+        PolygonBox[{{167, 166, 185, 40, 165}, {111, 19, 135, 149, 150}, {165, 
+         40, 120, 55, 56}, {147, 146, 44, 19, 111}, {129, 17, 117, 124, 
+         125}, {128, 127, 75, 17, 129}}]}]}, 
+     {RGBColor[0.9062233916308376, 0.8948822364541156, 0.849701737227212], 
+      EdgeForm[None], 
+      GraphicsGroupBox[
+       PolygonBox[{{147, 15, 150}, {183, 38, 180}, {59, 14, 88}, {167, 21, 
+        56}, {88, 14, 79}, {128, 22, 105}, {150, 15, 111}, {165, 21, 167}, {
+        111, 15, 147}, {125, 22, 129}, {93, 14, 59}, {180, 38, 178}, {178, 38,
+         183}, {105, 22, 125}, {129, 22, 128}, {56, 21, 165}, {79, 14, 
+        93}}]]}}, {{}, 
+     TagBox[
+      TooltipBox[
+       {GrayLevel[0], Opacity[0.4], LineBox[{79, 93, 59, 88, 79}], 
+        LineBox[{147, 150, 111, 147}], LineBox[{56, 165, 167, 56}], 
+        LineBox[{183, 180, 178, 183}], LineBox[{129, 128, 105, 125, 129}]},
+       "2.5`"],
+      Annotation[#, 2.5, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       {GrayLevel[0], Opacity[0.4], LineBox[{158, 144, 67, 99, 140}], 
+        LineBox[{172, 175, 135, 149, 146, 44, 96, 69}], 
+        LineBox[{161, 173, 137, 71, 118, 184, 185, 166, 55, 120, 161}], 
+        LineBox[{78, 92, 58, 87, 78}], 
+        LineBox[{109, 75, 127, 104, 124, 117, 107, 109}], 
+        LineBox[{182, 179, 177, 182}], LineBox[{83, 81, 84, 94, 133, 47, 83}]},
+       "2"],
+      Annotation[#, 2, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       {GrayLevel[0], Opacity[0.4], 
+        LineBox[{45, 82, 46, 132, 98, 130, 134, 148, 145, 43, 95, 68}], 
+        LineBox[{139, 110, 74, 126, 103, 123, 116, 106, 108, 66, 143, 157}], 
+        LineBox[{155, 164, 156, 54, 119, 160, 53, 171}], 
+        LineBox[{138, 73, 80, 181, 176, 72, 70, 136, 174, 138}], 
+        LineBox[{77, 91, 57, 86, 77}], LineBox[{65, 159, 151, 50, 65}]},
+       "1.5`"],
+      Annotation[#, 1.5, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       {GrayLevel[0], Opacity[0.4], 
+        LineBox[{42, 113, 169, 62, 170, 100, 85, 76, 90, 89, 102, 122, 115, 
+         52, 42}], LineBox[{61, 153, 49, 163, 64, 142, 61}], 
+        LineBox[{97, 131, 154, 97}]},
+       "1"],
+      Annotation[#, 1, "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       {GrayLevel[0], Opacity[0.4], 
+        LineBox[{112, 41, 51, 114, 121, 101, 168, 112}], 
+        LineBox[{152, 60, 141, 63, 162, 48, 152}]},
+       "0.5`"],
+      Annotation[#, 0.5, "Tooltip"]& ], {}, {}, {}}}],
+  AspectRatio->1,
+  AxesLabel->{
+    FormBox["\"Meter\"", TraditionalForm], 
+    FormBox["\"Week\"", TraditionalForm], 
+    FormBox["\"Farad\"", TraditionalForm]},
+  Frame->True,
+  FrameLabel->{
+    FormBox["\"Meter\"", TraditionalForm], 
+    FormBox["\"Week\"", TraditionalForm]},
+  PlotRange->{{2.3785802195192742`, 456.4123785752337}, {0.07547481824386071, 
+   2.9747808160165308`}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{
+    Scaled[0.02], 
+    Scaled[0.02]}]], "Output",
+ CellChangeTimes->{
+  3.460191037707947*^9, 3.4601911887751665`*^9, 3.4601912819968996`*^9, 
+   3.4632246751145334`*^9, 3.463225359548016*^9, 3.463225584662779*^9, 
+   3.4650220057016006`*^9, {3.4656363753525476`*^9, 3.465636457651003*^9}, 
+   3.473059228015355*^9, 3.499762108599388*^9, 3.499762474788333*^9, 
+   3.4997731786455235`*^9, 3.4997733928197737`*^9, 3.500203463817029*^9},
+ CellLabel->"Out[18]=",
+ CellID->117870355]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Angles are considered to have an angle dimension and so, for example \
+Steredian is not dimensionally equivelent to Radian. Angle units are handled \
+automatically by trigonometric functions\
+\>", "Text",
+ CellChangeTimes->{{3.4592495898279867`*^9, 3.459249598359346*^9}, {
+   3.4656350337017884`*^9, 3.4656351091251116`*^9}, {3.500200879011301*^9, 
+   3.5002009279411936`*^9}, {3.500200985671966*^9, 3.50020103031343*^9}, 
+   3.500201118953293*^9},
+ CellID->197918025],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sin", "[", 
+  RowBox[{"RightAngle", "/", "3."}], "]"}]], "Input",
+ CellChangeTimes->{{3.5002009306604652`*^9, 3.5002009409504943`*^9}},
+ CellLabel->"In[19]:=",
+ CellID->642454843],
+
+Cell[BoxData["0.49999999999999994`"], "Output",
+ CellChangeTimes->{3.500200941480547*^9, 3.5002034638570333`*^9},
+ CellLabel->"Out[19]=",
+ CellID->26000284]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cos", "[", 
+  RowBox[{"Sqrt", "[", 
+   RowBox[{"2.", " ", "Steradian"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.500200950781477*^9, 3.500200971423541*^9}},
+ CellLabel->"In[20]:=",
+ CellID->447386469],
+
+Cell[BoxData["0.15594369476537437`"], "Output",
+ CellChangeTimes->{3.500200971744573*^9, 3.500203463885036*^9},
+ CellLabel->"Out[20]=",
+ CellID->157694923]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Unit based quantities have a head Unit which is not shown in StandardForm.\
+\>", "Text",
+ CellChangeTimes->{{3.4592495898279867`*^9, 3.459249598359346*^9}, {
+   3.4656350337017884`*^9, 3.4656351091251116`*^9}, 3.5002011285532527`*^9},
+ CellID->28912295],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FullForm", "[", 
+  RowBox[{"10", " ", "Meter"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592475268640814`*^9, 3.4592475296922426`*^9}, 
+   3.459249798361906*^9, {3.4656350277016735`*^9, 3.4656350290610743`*^9}},
+ CellLabel->"In[21]:=",
+ CellID->961573969],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"Unit", "[", 
+    RowBox[{"10", ",", "\"\<Meter\>\""}], "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{3.4592475299578705`*^9, 3.4632246728842764`*^9, 
+  3.4632253579701133`*^9, 3.463225582990862*^9, 3.465635029248578*^9, 
+  3.4997624748203344`*^9, 3.4997731786935263`*^9, 3.499773392860776*^9, 
+  3.500203463915039*^9},
+ CellLabel->"Out[21]//FullForm=",
+ CellID->519591578]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+In TraditionalForm, traditional short labels, with tooltips, are used for the \
+units.\
+\>", "Text",
+ CellChangeTimes->{{3.4592495898279867`*^9, 3.459249598359346*^9}, {
+  3.4656350337017884`*^9, 3.465635129047369*^9}, {3.499762136523985*^9, 
+  3.4997621406402206`*^9}},
+ CellID->1041049538],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TraditionalForm", "[", 
+  RowBox[{"10", " ", "Meter"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592475268640814`*^9, 3.4592475296922426`*^9}, 
+   3.459249798361906*^9, {3.4656350277016735`*^9, 3.465635054045929*^9}},
+ CellLabel->"In[22]:=",
+ CellID->586985031],
+
+Cell[BoxData[
+ FormBox[
+  InterpretationBox[
+   RowBox[{"10", " ", 
+    TooltipBox[
+     StyleBox["m",
+      ShowAutoStyles->False],
+     "Meter",
+     TooltipStyle->"TextStyling"]}],
+   AutomaticUnits`Unit[10, "Meter"],
+   AutoDelete->True], TraditionalForm]], "Output",
+ CellChangeTimes->{3.465635054420936*^9, 3.499762474846336*^9, 
+  3.499773178723528*^9, 3.499773392889778*^9, 3.500203463946042*^9},
+ CellLabel->"Out[22]//TraditionalForm=",
+ CellID->129150513]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["You can convert quantities to specific units", "Text",
+ CellChangeTimes->{{3.459249729595401*^9, 3.459249737501752*^9}, {
+  3.4656352851597414`*^9, 3.465635305769512*^9}},
+ CellID->79295396],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{"Meter", ",", "Furlong"}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+  3.4639887428670816`*^9, 3.463988748554618*^9}, {3.465635318847888*^9, 
+  3.465635319894783*^9}},
+ CellLabel->"In[23]:=",
+ CellID->639236054],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   FractionBox["125", "25146"], " ", "Furlong"}],
+  AutomaticUnits`Unit[
+   Rational[125, 25146], "Furlong"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{3.4592469429659824`*^9, 3.463224673009046*^9, 
+  3.4632253580482273`*^9, 3.4632255830689883`*^9, 3.465635320457294*^9, 
+  3.499762155251056*^9, 3.4997624748713374`*^9, 3.4997731787515297`*^9, 
+  3.4997733929177794`*^9, 3.5002034640360513`*^9},
+ CellLabel->"Out[23]=",
+ CellID->79548148]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Or to appropriate the most appropriate unit from a list", "Text",
+ CellChangeTimes->{{3.459249729595401*^9, 3.459249737501752*^9}, {
+  3.4656352851597414`*^9, 3.465635356489236*^9}},
+ CellID->231770576],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"1.", "Meter"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Yard", ",", "Mile", ",", "Day"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+  3.4639887428670816`*^9, 3.463988748554618*^9}, {3.4656353610361977`*^9, 
+  3.4656353716926527`*^9}, {3.499762169216855*^9, 3.499762169465869*^9}},
+ CellLabel->"In[24]:=",
+ CellID->112920641],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"1.0936132983377078`", " ", "Yard"}],
+  AutomaticUnits`Unit[1.0936132983377078`, "Yard"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{
+  3.4592469429659824`*^9, 3.463224673009046*^9, 3.4632253580482273`*^9, 
+   3.4632255830689883`*^9, 3.465635372395791*^9, {3.4997621658856645`*^9, 
+   3.49976217035792*^9}, 3.4997624748963385`*^9, 3.499773178777531*^9, 
+   3.4997733929447813`*^9, 3.5002034640670547`*^9},
+ CellLabel->"Out[24]=",
+ CellID->18090251]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"2000.", "Meter"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Yard", ",", "Mile", ",", "Day"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+   3.4639887428670816`*^9, 3.463988748554618*^9}, {3.4656353610361977`*^9, 
+   3.46563537988031*^9}, 3.4997621792584295`*^9},
+ CellLabel->"In[25]:=",
+ CellID->92490373],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"1.242742384474668`", " ", "Mile"}],
+  AutomaticUnits`Unit[1.242742384474668, "Mile"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{
+  3.4592469429659824`*^9, 3.463224673009046*^9, 3.4632253580482273`*^9, 
+   3.4632255830689883`*^9, {3.465635372395791*^9, 3.4656353803490686`*^9}, 
+   3.499762179862464*^9, 3.4997624749203405`*^9, 3.4997731788035326`*^9, 
+   3.4997733929687824`*^9, 3.5002034640950575`*^9},
+ CellLabel->"Out[25]=",
+ CellID->191785710]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["A large collection of predefined sets of units is available", "Text",
+ CellChangeTimes->{{3.459249729595401*^9, 3.459249737501752*^9}, {
+  3.4656352851597414`*^9, 3.465635356489236*^9}, {3.465635394114958*^9, 
+  3.4656354107871532`*^9}},
+ CellID->6096535],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"100.", "Kilogram"}], ",", "\"\<Imperial\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+   3.4639887428670816`*^9, 3.463988748554618*^9}, {3.4656353610361977`*^9, 
+   3.46563537988031*^9}, {3.465635426990589*^9, 3.465635437443915*^9}, {
+   3.46563567283906*^9, 3.4656356911675367`*^9}, 3.4730591185183673`*^9},
+ CellLabel->"In[26]:=",
+ CellID->716150852],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"1.9684130552221215`", " ", "Hundredweight"}],
+  AutomaticUnits`Unit[1.9684130552221215`, "Hundredweight"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{{3.4656354306781597`*^9, 3.465635437647044*^9}, {
+   3.465635674464091*^9, 3.4656356913394146`*^9}, {3.4730591026884193`*^9, 
+   3.473059118627755*^9}, 3.499762187150881*^9, 3.4997624749603424`*^9, 
+   3.499773178847535*^9, 3.4997733930117846`*^9, 3.5002034641420617`*^9},
+ CellLabel->"Out[26]=",
+ CellID->748706496]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"100.", "Kilogram"}], ",", "\"\<Atomic\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+   3.4639887428670816`*^9, 3.463988748554618*^9}, {3.4656353610361977`*^9, 
+   3.46563537988031*^9}, {3.465635426990589*^9, 3.465635459241208*^9}, {
+   3.465635529633185*^9, 3.4656355304144497`*^9}, {3.465635591290619*^9, 
+   3.4656355968219748`*^9}, {3.46563568251112*^9, 3.465635696917647*^9}, 
+   3.4730591203779564`*^9},
+ CellLabel->"In[27]:=",
+ CellID->75723519],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"1.0977692365710594`*^32", " ", "ElectronRestMass"}],
+  AutomaticUnits`Unit[1.0977692365710594`*^32, "ElectronRestMass"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{{3.4656354306781597`*^9, 3.465635459428712*^9}, 
+   3.465635530898834*^9, {3.465635589181203*^9, 3.465635597415736*^9}, {
+   3.4656356827767506`*^9, 3.465635697714537*^9}, {3.4730591062669563`*^9, 
+   3.4730591205498514`*^9}, 3.499762189236*^9, 3.4997624749863443`*^9, 
+   3.4997731789145393`*^9, 3.499773393035786*^9, 3.500203464170065*^9},
+ CellLabel->"Out[27]=",
+ CellID->292281879]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["The available named unit sets is given by...", "Text",
+ CellChangeTimes->{{3.459249729595401*^9, 3.459249737501752*^9}, {
+  3.4656352851597414`*^9, 3.465635356489236*^9}, {3.465635394114958*^9, 
+  3.4656354107871532`*^9}, {3.4656354885073957`*^9, 3.4656355187423506`*^9}},
+ CellID->190595549],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"UnitSet", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+  3.4639887428670816`*^9, 3.463988748554618*^9}, {3.4656353610361977`*^9, 
+  3.46563537988031*^9}, {3.465635426990589*^9, 3.465635459241208*^9}, {
+  3.4656355037264376`*^9, 3.465635512867238*^9}},
+ CellLabel->"In[28]:=",
+ CellID->2218373],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"All\"\>", ",", "\<\"Alternative\"\>", 
+   ",", "\<\"AlternativeNames\"\>", ",", "\<\"Anthropic\"\>", 
+   ",", "\<\"Arabic\"\>", ",", "\<\"Astronomical\"\>", ",", "\<\"Atomic\"\>", 
+   ",", "\<\"Avoirdupois\"\>", ",", "\<\"BritishAvoirdupois\"\>", 
+   ",", "\<\"CGS\"\>", ",", "\<\"Champagne\"\>", ",", "\<\"IEC\"\>", 
+   ",", "\<\"Imperial\"\>", ",", "\<\"InteractiveChoices\"\>", 
+   ",", "\<\"Japanese\"\>", ",", "\<\"Malay\"\>", ",", "\<\"Maltese\"\>", 
+   ",", "\<\"MeterTonneSecond\"\>", ",", "\<\"MKS\"\>", 
+   ",", "\<\"Norwegian\"\>", ",", "\<\"Planck\"\>", ",", "\<\"PrefixedSI\"\>",
+    ",", "\<\"Roman\"\>", ",", "\<\"Russian\"\>", ",", "\<\"Scottish\"\>", 
+   ",", "\<\"SI\"\>", ",", "\<\"Spanish\"\>", ",", "\<\"Survey\"\>", 
+   ",", "\<\"Swedish\"\>", ",", "\<\"Taiwanese\"\>", ",", "\<\"Troy\"\>", 
+   ",", "\<\"USCustomary\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.4656355067889967`*^9, 3.465635513007866*^9}, 
+   3.4997621971594534`*^9, 3.4997624750123453`*^9, 3.499773178949541*^9, 
+   3.499773393069788*^9, 3.5002034642090683`*^9},
+ CellLabel->"Out[28]=",
+ CellID->174093215]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+You can see or change the members of a particular set or create new sets.\
+\>", "Text",
+ CellChangeTimes->{{3.459249729595401*^9, 3.459249737501752*^9}, {
+  3.4656352851597414`*^9, 3.465635356489236*^9}, {3.465635394114958*^9, 
+  3.4656354107871532`*^9}, {3.4656354885073957`*^9, 3.4656355187423506`*^9}, {
+  3.465635763653303*^9, 3.465635771419077*^9}, {3.4656358074666443`*^9, 
+  3.465635818404354*^9}},
+ CellID->106873310],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"UnitSet", "[", "\"\<Troy\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+  3.4639887428670816`*^9, 3.463988748554618*^9}, {3.4656353610361977`*^9, 
+  3.46563537988031*^9}, {3.465635426990589*^9, 3.465635459241208*^9}, {
+  3.4656355037264376`*^9, 3.465635512867238*^9}, {3.4656357795286083`*^9, 
+  3.465635796513309*^9}},
+ CellLabel->"In[29]:=",
+ CellID->140028325],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   InterpretationBox["Grain",
+    AutomaticUnits`Unit[1, "Grain"],
+    AutoDelete->True], ",", 
+   InterpretationBox["TroyOunce",
+    AutomaticUnits`Unit[1, "TroyOunce"],
+    AutoDelete->True], ",", 
+   InterpretationBox["TroyPound",
+    AutomaticUnits`Unit[1, "TroyPound"],
+    AutoDelete->True], ",", 
+   InterpretationBox["Pennyweight",
+    AutomaticUnits`Unit[1, "Pennyweight"],
+    AutoDelete->True]}], "}"}]], "Output",
+ CellChangeTimes->{{3.4656355067889967`*^9, 3.465635513007866*^9}, 
+   3.4656357970601945`*^9, 3.499762204392867*^9, 3.499762475038347*^9, 
+   3.499773178977543*^9, 3.4997733930987897`*^9, 3.5002034642410717`*^9},
+ CellLabel->"Out[29]=",
+ CellID->280299414]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"0.1", " ", "Gram"}], ",", "\"\<Troy\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+  3.4639887428670816`*^9, 3.463988748554618*^9}, {3.4656353610361977`*^9, 
+  3.46563537988031*^9}, {3.465635426990589*^9, 3.465635459241208*^9}, {
+  3.4656355037264376`*^9, 3.465635512867238*^9}, {3.4656357795286083`*^9, 
+  3.465635796513309*^9}, {3.4656359364378705`*^9, 3.4656359444849*^9}},
+ CellLabel->"In[30]:=",
+ CellID->52969169],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"1.5432358352941433`", " ", "Grain"}],
+  AutomaticUnits`Unit[1.5432358352941433`, "Grain"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{{3.4656355067889967`*^9, 3.465635513007866*^9}, 
+   3.4656357970601945`*^9, 3.465635944813031*^9, 3.4997622102462015`*^9, 
+   3.4997624750633483`*^9, 3.499773179003544*^9, 3.4997733931677933`*^9, 
+   3.500203464271075*^9},
+ CellLabel->"Out[30]=",
+ CellID->442318378]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"UnitSet", "[", "\"\<HeavyTroy\>\"", "]"}], " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Unit", "[", 
+      RowBox[{"1", ",", " ", "\"\<TroyOunce\>\""}], "]"}], ",", " ", 
+     RowBox[{"Unit", "[", 
+      RowBox[{"1", ",", " ", "\"\<TroyPound\>\""}], "]"}], ",", " ", 
+     RowBox[{"Unit", "[", 
+      RowBox[{"1", ",", " ", "\"\<Pennyweight\>\""}], "]"}]}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"0.1", " ", "Gram"}], ",", " ", "\"\<HeavyTroy\>\""}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.4592469366846523`*^9, 3.4592469425284767`*^9}, {
+  3.4639887428670816`*^9, 3.463988748554618*^9}, {3.4656353610361977`*^9, 
+  3.46563537988031*^9}, {3.465635426990589*^9, 3.465635459241208*^9}, {
+  3.4656355037264376`*^9, 3.465635512867238*^9}, {3.4656357795286083`*^9, 
+  3.465635796513309*^9}, {3.465635953078815*^9, 3.4656359691572485`*^9}, {
+  3.4656360354710217`*^9, 3.465636042502407*^9}, {3.499762363975994*^9, 
+  3.4997623783048143`*^9}},
+ CellLabel->"In[31]:=",
+ CellID->552390833],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"0.06430149313725596`", " ", "Pennyweight"}],
+  AutomaticUnits`Unit[0.06430149313725596, "Pennyweight"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{
+  3.465635969688509*^9, {3.4997622233819532`*^9, 3.4997622306233673`*^9}, 
+   3.4997623796918936`*^9, 3.4997624750893497`*^9, 3.4997731790305457`*^9, 
+   3.499773393193795*^9, 3.5002034643000774`*^9},
+ CellLabel->"Out[32]=",
+ CellID->208001159]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["You can declare new units", "Text",
+ CellChangeTimes->{{3.4592500516307726`*^9, 3.45925005886524*^9}, {
+  3.4656360239239254`*^9, 3.4656360282677584`*^9}},
+ CellID->169557279],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"DeclareUnit", "[", "\"\<word\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"DeclareUnit", "[", 
+   RowBox[{"\"\<page\>\"", ",", 
+    RowBox[{"2000", " ", "word"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DeclareUnit", "[", 
+   RowBox[{"\"\<book\>\"", ",", 
+    RowBox[{"200", " ", "page"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"book", " ", "+", 
+  RowBox[{"200", " ", "word"}]}]}], "Input",
+ CellChangeTimes->{{3.459247147546726*^9, 3.459247173359556*^9}, 
+   3.4592500643028097`*^9, {3.499762389336445*^9, 3.4997623895014544`*^9}},
+ CellLabel->"In[33]:=",
+ CellID->219106665],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"400200", " ", "word"}],
+  AutomaticUnits`Unit[400200, "word"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{3.459247222563311*^9, 3.46322467377326*^9, 
+  3.463225358751253*^9, 3.4632255838815093`*^9, 3.4650219878271723`*^9, 
+  3.499762393370676*^9, 3.4997624751713543`*^9, 3.499773179127551*^9, 
+  3.4997733932888007`*^9, 3.5002034644010878`*^9},
+ CellLabel->"Out[36]=",
+ CellID->245569801]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Convert", "[", 
+  RowBox[{
+   RowBox[{"book", " ", "+", 
+    RowBox[{"2000", " ", "word"}]}], ",", " ", "page"}], "]"}]], "Input",
+ CellChangeTimes->{{3.459247226641488*^9, 3.459247237626004*^9}, {
+  3.459250077662356*^9, 3.4592500895843835`*^9}},
+ CellLabel->"In[37]:=",
+ CellID->435801092],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"201", " ", "page"}],
+  AutomaticUnits`Unit[201, "page"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{
+  3.459247238001009*^9, {3.459250078771745*^9, 3.459250089709385*^9}, 
+   3.463224673788856*^9, 3.463225358829367*^9, 3.463225583990887*^9, 
+   3.465021990186472*^9, 3.4997623956628065`*^9, 3.499762475204356*^9, 
+   3.499773179151553*^9, 3.4997733933128023`*^9, 3.5002034644290905`*^9},
+ CellLabel->"Out[37]=",
+ CellID->36873328]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Temperatures are assumed to represent temperature differences for standard \
+unit conversion\
+\>", "Text",
+ CellChangeTimes->{{3.4592498672377872`*^9, 3.45924989164435*^9}, {
+  3.465636291460312*^9, 3.4656363193045964`*^9}},
+ CellID->347195835],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Celsius", "/", "Meter"}], "+", 
+  RowBox[{"Fahrenheit", "/", "Meter"}]}]], "Input",
+ CellChangeTimes->{{3.4592475988337526`*^9, 3.4592476297560234`*^9}, {
+  3.4592498541594954`*^9, 3.4592498619408445`*^9}},
+ CellLabel->"In[38]:=",
+ CellID->539008858],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   FractionBox["14", "9"], " ", 
+   RowBox[{"Kelvin", 
+    SuperscriptBox["Meter", 
+     RowBox[{"-", "1"}]]}]}],
+  AutomaticUnits`Unit[
+   Rational[14, 9], "Kelvin"/"Meter"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{3.4592476308341618`*^9, 3.4592498635658655`*^9, 
+  3.4632246731182194`*^9, 3.4632253582357006`*^9, 3.4632255833658714`*^9, 
+  3.4997624012331257`*^9, 3.4997624752293577`*^9, 3.4997731791805544`*^9, 
+  3.4997733933408036`*^9, 3.5002034644600935`*^9},
+ CellLabel->"Out[38]=",
+ CellID->64334480]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+But their different origins are respected using ConvertTemperature\
+\>", "Text",
+ CellChangeTimes->{{3.4592498955193996`*^9, 3.4592499107539697`*^9}, {
+  3.465636280116344*^9, 3.465636280553852*^9}},
+ CellID->248116565],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ConvertTemperature", "[", 
+  RowBox[{
+   RowBox[{"122.01", " ", "Celsius"}], ",", "Fahrenheit"}], "]"}]], "Input",
+ CellChangeTimes->{{3.459247648178134*^9, 3.459247668725272*^9}, {
+  3.4722865564232655`*^9, 3.4722865566263905`*^9}, {3.4722888908962226`*^9, 
+  3.4722889576462226`*^9}, {3.4722890300993476`*^9, 3.4722890526618476`*^9}, {
+  3.4722893075090747`*^9, 3.4722893144467077`*^9}, {3.472293359403412*^9, 
+  3.4722933712019477`*^9}},
+ CellLabel->"In[39]:=",
+ CellID->105992731],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"251.618`", " ", "Fahrenheit"}],
+  AutomaticUnits`Unit[251.618, "Fahrenheit"],
+  AutoDelete->True]], "Output",
+ CellChangeTimes->{{3.4592476651158504`*^9, 3.4592476691471524`*^9}, 
+   3.463224673133816*^9, 3.4632253582669463`*^9, 3.4632255833814964`*^9, 
+   3.4722862482881136`*^9, 3.4722865572670155`*^9, 3.4722867128138905`*^9, {
+   3.4722888886774726`*^9, 3.4722889578024726`*^9}, {3.4722890252712226`*^9, 
+   3.4722890527712226`*^9}, {3.4722893076965785`*^9, 
+   3.4722893145873356`*^9}, {3.4722933566686516`*^9, 3.4722933714207287`*^9}, 
+   3.4997624090245714`*^9, 3.4997624752543592`*^9, 3.499773179207556*^9, 
+   3.499773393371805*^9, 3.5002034644900966`*^9},
+ CellLabel->"Out[39]=",
+ CellID->10032640]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "TutorialMoreAboutSection",
+ CellID->23220180],
+
+Cell["XXXX", "TutorialMoreAbout",
+ CellID->1567025153]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Tutorials", "RelatedTutorialsSection",
+ CellID->415694126],
+
+Cell["XXXX", "RelatedTutorials",
+ CellID->806871991]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Wolfram Education Group Courses", "TutorialRelatedLinksSection",
+ CellID->415694148],
+
+Cell["XXXX", "TutorialRelatedLinks",
+ CellID->415694149]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{700, 629},
+WindowMargins->{{176, Automatic}, {Automatic, -24}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (November 7, 2010)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "TutorialPageStyles.nb", 
+  CharacterEncoding -> "WindowsANSI"],
+PrivateNotebookOptions -> {"NotebookAuthor" -> ""}
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 395, 15, 22, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[965, 39, 68, 1, 27, "CategorizationSection",
+ CellID->1122911449],
+Cell[1036, 42, 81, 2, 31, "Categorization",
+ CellID->686433507],
+Cell[1120, 46, 131, 3, 31, "Categorization",
+ CellID->605800465],
+Cell[1254, 51, 128, 3, 31, "Categorization",
+ CellID->468444828],
+Cell[1385, 56, 159, 4, 31, "Categorization"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1581, 65, 56, 1, 17, "KeywordsSection",
+ CellID->1427428552],
+Cell[1640, 68, 163, 2, 17, "Keywords",
+ CellID->1251852827]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1840, 75, 53, 1, 17, "DetailsSection",
+ CellID->307771771],
+Cell[1896, 78, 131, 3, 31, "Details",
+ CellID->218895918],
+Cell[2030, 83, 137, 3, 31, "Details",
+ CellID->350963985],
+Cell[2170, 88, 133, 3, 31, "Details",
+ CellID->795871300],
+Cell[2306, 93, 71, 2, 31, "Details",
+ CellID->199739161],
+Cell[2380, 97, 60, 2, 31, "Details",
+ CellID->40625308],
+Cell[2443, 101, 61, 2, 31, "Details",
+ CellID->357121918],
+Cell[2507, 105, 62, 2, 31, "Details",
+ CellID->35949532],
+Cell[2572, 109, 78, 2, 31, "Details",
+ CellID->929432370],
+Cell[2653, 113, 67, 2, 31, "Details",
+ CellID->240026365]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2757, 120, 55, 1, 105, "Title",
+ CellID->509267359],
+Cell[2815, 123, 332, 7, 36, "Text",
+ CellID->1534169418],
+Cell[3150, 132, 234, 5, 36, "Text",
+ CellID->451027693],
+Cell[3387, 139, 152, 4, 21, "Text",
+ CellID->393336728],
+Cell[CellGroupData[{
+Cell[3564, 147, 137, 2, 37, "MathCaption",
+ CellID->39669634],
+Cell[3704, 151, 245, 5, 27, "Input",
+ CellID->162445633]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3986, 161, 450, 8, 36, "Text",
+ CellID->455065023],
+Cell[CellGroupData[{
+Cell[4461, 173, 312, 8, 27, "Input",
+ CellID->243635183],
+Cell[4776, 183, 553, 12, 25, "Output",
+ CellID->449583942]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5378, 201, 441, 9, 21, "Text",
+ CellID->135355214],
+Cell[CellGroupData[{
+Cell[5844, 214, 212, 6, 27, "Input",
+ CellID->509966676],
+Cell[6059, 222, 238, 7, 25, "Output",
+ CellID->480934068]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6346, 235, 347, 7, 21, "Text",
+ CellID->117531886],
+Cell[CellGroupData[{
+Cell[6718, 246, 175, 4, 27, "Input",
+ CellID->181029488],
+Cell[6896, 252, 944, 18, 19, "Message",
+ CellID->131643093],
+Cell[7843, 272, 511, 13, 25, "Output",
+ CellID->118571559]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8403, 291, 264, 6, 21, "Text",
+ CellID->593106573],
+Cell[CellGroupData[{
+Cell[8692, 301, 608, 15, 27, "Input",
+ CellID->182662268],
+Cell[9303, 318, 652, 12, 25, "Output",
+ CellID->346820915]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10004, 336, 287, 6, 21, "Text",
+ CellID->143597925],
+Cell[CellGroupData[{
+Cell[10316, 346, 279, 6, 27, "Input",
+ CellID->303770721],
+Cell[10598, 354, 606, 12, 25, "Output",
+ CellID->14375456]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11253, 372, 309, 7, 21, "Text",
+ CellID->150389627],
+Cell[CellGroupData[{
+Cell[11587, 383, 218, 6, 27, "Input",
+ CellID->215662077],
+Cell[11808, 391, 332, 6, 25, "Output",
+ CellID->78692310]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12177, 402, 290, 7, 27, "Input",
+ CellID->73072765],
+Cell[12470, 411, 815, 22, 25, "Output",
+ CellID->238195615]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13322, 438, 339, 8, 27, "Input",
+ CellID->4819519],
+Cell[13664, 448, 485, 10, 25, "Output",
+ CellID->320830245]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14186, 463, 357, 11, 27, "Input",
+ CellID->72661458],
+Cell[14546, 476, 630, 15, 25, "Output",
+ CellID->18342375]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15213, 496, 365, 11, 27, "Input",
+ CellID->190002597],
+Cell[15581, 509, 543, 12, 25, "Output",
+ CellID->133033454]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16173, 527, 424, 8, 36, "Text",
+ CellID->146130433],
+Cell[CellGroupData[{
+Cell[16622, 539, 278, 8, 27, "Input",
+ CellID->55464079],
+Cell[16903, 549, 1938, 48, 45, "Output",
+ CellID->395564590]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18878, 602, 197, 5, 27, "Input",
+ CellID->46634454],
+Cell[19078, 609, 1564, 47, 25, "Output",
+ CellID->82484754]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20691, 662, 323, 6, 21, "Text",
+ CellID->497717032],
+Cell[CellGroupData[{
+Cell[21039, 672, 304, 8, 27, "Input",
+ CellID->516590723],
+Cell[21346, 682, 1418, 37, 45, "Output",
+ CellID->110745604]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22813, 725, 321, 7, 21, "Text",
+ CellID->613641842],
+Cell[CellGroupData[{
+Cell[23159, 736, 376, 10, 27, "Input",
+ CellID->468291384],
+Cell[23538, 748, 996, 24, 127, "Output",
+ CellID->375226892]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24571, 777, 341, 10, 27, "Input",
+ CellID->543651737],
+Cell[24915, 789, 2883, 61, 146, "Output",
+ CellID->779506146]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27835, 855, 1048, 26, 108, "Input",
+ CellID->8657587],
+Cell[28886, 883, 12036, 215, 193, "Output",
+ CellID->117870355]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40971, 1104, 479, 9, 36, "Text",
+ CellID->197918025],
+Cell[CellGroupData[{
+Cell[41475, 1117, 203, 5, 27, "Input",
+ CellID->642454843],
+Cell[41681, 1124, 156, 3, 25, "Output",
+ CellID->26000284]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41874, 1132, 230, 6, 27, "Input",
+ CellID->447386469],
+Cell[42107, 1140, 155, 3, 25, "Output",
+ CellID->157694923]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42311, 1149, 263, 5, 21, "Text",
+ CellID->28912295],
+Cell[CellGroupData[{
+Cell[42599, 1158, 279, 6, 27, "Input",
+ CellID->961573969],
+Cell[42881, 1166, 510, 14, 25, "Output",
+ CellID->519591578]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43440, 1186, 301, 7, 21, "Text",
+ CellID->1041049538],
+Cell[CellGroupData[{
+Cell[43766, 1197, 284, 6, 27, "Input",
+ CellID->586985031],
+Cell[44053, 1205, 465, 14, 25, "Output",
+ CellID->129150513]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44567, 1225, 196, 3, 21, "Text",
+ CellID->79295396],
+Cell[CellGroupData[{
+Cell[44788, 1232, 307, 7, 27, "Input",
+ CellID->639236054],
+Cell[45098, 1241, 492, 12, 42, "Output",
+ CellID->79548148]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45639, 1259, 208, 3, 21, "Text",
+ CellID->231770576],
+Cell[CellGroupData[{
+Cell[45872, 1266, 438, 10, 27, "Input",
+ CellID->112920641],
+Cell[46313, 1278, 500, 11, 25, "Output",
+ CellID->18090251]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46850, 1294, 417, 10, 27, "Input",
+ CellID->92490373],
+Cell[47270, 1306, 501, 11, 25, "Output",
+ CellID->191785710]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47820, 1323, 261, 4, 21, "Text",
+ CellID->6096535],
+Cell[CellGroupData[{
+Cell[48106, 1331, 465, 9, 27, "Input",
+ CellID->716150852],
+Cell[48574, 1342, 519, 10, 25, "Output",
+ CellID->748706496]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49130, 1357, 564, 11, 27, "Input",
+ CellID->75723519],
+Cell[49697, 1370, 602, 11, 25, "Output",
+ CellID->292281879]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50348, 1387, 298, 4, 21, "Text",
+ CellID->190595549],
+Cell[CellGroupData[{
+Cell[50671, 1395, 365, 7, 27, "Input",
+ CellID->2218373],
+Cell[51039, 1404, 1144, 19, 102, "Output",
+ CellID->174093215]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52232, 1429, 435, 8, 21, "Text",
+ CellID->106873310],
+Cell[CellGroupData[{
+Cell[52692, 1441, 434, 8, 27, "Input",
+ CellID->140028325],
+Cell[53129, 1451, 723, 19, 25, "Output",
+ CellID->280299414]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53889, 1475, 531, 10, 27, "Input",
+ CellID->52969169],
+Cell[54423, 1487, 453, 10, 25, "Output",
+ CellID->442318378]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54913, 1502, 1083, 25, 68, "Input",
+ CellID->552390833],
+Cell[55999, 1529, 445, 10, 25, "Output",
+ CellID->208001159]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56493, 1545, 181, 3, 21, "Text",
+ CellID->169557279],
+Cell[CellGroupData[{
+Cell[56699, 1552, 647, 16, 88, "Input",
+ CellID->219106665],
+Cell[57349, 1570, 441, 10, 25, "Output",
+ CellID->245569801]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57827, 1585, 315, 8, 27, "Input",
+ CellID->435801092],
+Cell[58145, 1595, 483, 11, 25, "Output",
+ CellID->36873328]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[58677, 1612, 254, 6, 21, "Text",
+ CellID->347195835],
+Cell[CellGroupData[{
+Cell[58956, 1622, 285, 7, 27, "Input",
+ CellID->539008858],
+Cell[59244, 1631, 564, 15, 42, "Output",
+ CellID->64334480]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59857, 1652, 229, 5, 21, "Text",
+ CellID->248116565],
+Cell[CellGroupData[{
+Cell[60111, 1661, 508, 10, 27, "Input",
+ CellID->105992731],
+Cell[60622, 1673, 753, 14, 25, "Output",
+ CellID->10032640]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61424, 1693, 65, 1, 70, "TutorialMoreAboutSection",
+ CellID->23220180],
+Cell[61492, 1696, 54, 1, 20, "TutorialMoreAbout",
+ CellID->1567025153]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61583, 1702, 72, 1, 70, "RelatedTutorialsSection",
+ CellID->415694126],
+Cell[61658, 1705, 52, 1, 20, "RelatedTutorials",
+ CellID->806871991]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[61747, 1711, 98, 1, 70, "TutorialRelatedLinksSection",
+ CellID->415694148],
+Cell[61848, 1714, 56, 1, 20, "TutorialRelatedLinks",
+ CellID->415694149]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

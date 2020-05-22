@@ -1,0 +1,403 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12214,        394]
+NotebookOptionsPosition[      9176,        307]
+NotebookOutlinePosition[     10837,        348]
+CellTagsIndexPosition[     10794,        345]
+WindowTitle->Automatic unit conversion
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[GridBox[{
+   {Cell["AUTOMATIC UNITS GUIDE", "PacletNameCell"], Cell[TextData[{
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "Functions",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"Functions", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"CGS\"\>":>Documentation`HelpLookup[
+       "paclet:AutomaticUnits/ref/CGS"], "\<\"Convert\"\>":>
+       Documentation`HelpLookup[
+       "paclet:AutomaticUnits/ref/Convert"], "\<\"ConvertTemperature\"\>":>
+       Documentation`HelpLookup[
+       "paclet:AutomaticUnits/ref/ConvertTemperature"], "\<\"DeclareUnit\"\>":>
+       Documentation`HelpLookup[
+       "paclet:AutomaticUnits/ref/DeclareUnit"], "\<\"MKS\"\>":>
+       Documentation`HelpLookup[
+       "paclet:AutomaticUnits/ref/MKS"], "\<\"SI\"\>":>
+       Documentation`HelpLookup[
+       "paclet:AutomaticUnits/ref/SI"], "\<\"Unit\"\>":>
+       Documentation`HelpLookup[
+       "paclet:AutomaticUnits/ref/Unit"], "\<\"UnitList\"\>":>
+       Documentation`HelpLookup[
+       "paclet:AutomaticUnits/ref/UnitList"], "\<\"UnitSet\"\>":>
+       Documentation`HelpLookup["paclet:AutomaticUnits/ref/UnitSet"]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"GuideFunction"]],
+      LineSpacing->{1.4, 0}],
+     "\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+     Cell[BoxData[
+      ActionMenuBox[
+       FrameBox[
+        InterpretationBox[Cell[TextData[{
+          "URL",
+          StyleBox[" \[FilledDownTriangle]", "AnchorBarArrow",
+           StripOnInput->False]
+         }]],
+         TextCell[
+          Row[{"URL", 
+            Style[" \[FilledDownTriangle]", "AnchorBarArrow"]}]]],
+        StripOnInput->False], {"\<\"AutomaticUnits/guide/AutomaticUnits\"\>":>
+       None, "\<\"Copy Wolfram Documentation Center URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell["AutomaticUnits/guide/AutomaticUnits"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; Null], 
+       Delimiter, "\<\"Copy web URL\"\>":>
+       Module[{DocumentationSearch`Private`nb$}, 
+        DocumentationSearch`Private`nb$ = NotebookPut[
+           Notebook[{
+             Cell[
+              BoxData[
+               MakeBoxes[
+                Hyperlink[
+                "http://reference.wolfram.com/language/AutomaticUnits/guide/\
+AutomaticUnits.html"], StandardForm]], "Input", TextClipboardType -> 
+              "PlainText"]}, Visible -> False]]; 
+        SelectionMove[DocumentationSearch`Private`nb$, All, Notebook]; 
+        FrontEndTokenExecute[DocumentationSearch`Private`nb$, "Copy"]; 
+        NotebookClose[DocumentationSearch`Private`nb$]; 
+        Null], "\<\"Go to web URL\"\>":>FrontEndExecute[{
+         NotebookLocate[{
+           URL[
+            StringJoin[
+             If[
+              TrueQ[DocumentationBuild`Make`Private`wsmlinkQ$2148], 
+              "http://reference.wolfram.com/system-modeler/", 
+              "http://reference.wolfram.com/language/"], 
+             "AutomaticUnits/guide/AutomaticUnits", ".html"]], None}]}]},
+       Appearance->None,
+       MenuAppearance->Automatic,
+       MenuStyle->"URLMenu"]],
+      LineSpacing->{1.4, 0}]
+    }], "AnchorBar"]}
+  }]], "AnchorBarGrid",
+ GridBoxOptions->{GridBoxItemSize->{"Columns" -> {
+     Scaled[0.65], {
+      Scaled[0.34]}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+   "RowsIndexed" -> {}}},
+ CellID->1],
+
+Cell[CellGroupData[{
+
+Cell["Automatic unit conversion", "GuideTitle",
+ CellID->942062912],
+
+Cell["\<\
+This package provides facilities for handling physical units within \
+computations in an automated way.\
+\>", "GuideAbstract",
+ CellID->2001916300]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Reference"
+}], "GuideReferenceSection",
+ WholeCellGroupOpener->True],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[CellGroupData[{
+
+Cell["Conversion functions", "GuideFunctionsSubsection",
+ CellID->116948676],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Convert"]],"paclet:AutomaticUnits/ref/Convert"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " convert a quantity in one unit to another"
+}], "GuideText",
+ CellID->203374175],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["SI"]],"paclet:AutomaticUnits/ref/SI"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "convert a quantity into the SI unit system"
+}], "GuideText",
+ CellID->1463276848],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["CGS"]],"paclet:AutomaticUnits/ref/CGS"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "convert a quantity into the CGS unit system"
+}], "GuideText",
+ CellID->505413840],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["MKS"]],"paclet:AutomaticUnits/ref/MKS"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ "convert a quantity into the MKS unit system"
+}], "GuideText",
+ CellID->187718429],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["ConvertTemperature"]],
+    "paclet:AutomaticUnits/ref/ConvertTemperature"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " convert between temperature units"
+}], "GuideText",
+ CellID->660639527],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["UnitList"]],"paclet:AutomaticUnits/ref/UnitList"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " convert a quantity into mixed units of descending significance"
+}], "GuideText",
+ CellID->436745944],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["$DefaultUnitSet"]],"paclet:AutomaticUnits/ref/$DefaultUnitSet"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " default units to use in output"
+}], "GuideText",
+ CellID->9896388]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Unit descriptions", "GuideFunctionsSubsection",
+ CellID->550246537],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["Unit"]],"paclet:AutomaticUnits/ref/Unit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " a unit based quantity"
+}], "GuideText",
+ CellID->42856944],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["DeclareUnit"]],"paclet:AutomaticUnits/ref/DeclareUnit"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " declare a new unit"
+}], "GuideText",
+ CellID->577567287],
+
+Cell[TextData[{
+ Cell[BoxData[
+  TemplateBox[{Cell[
+     TextData["UnitSet"]],"paclet:AutomaticUnits/ref/UnitSet"},
+   "RefLink",
+   BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"],
+ " ",
+ StyleBox["\[LongDash]", "GuideEmDash"],
+ " declare a collection of units in a common unit system"
+}], "GuideText",
+ CellID->472827717]
+}, Open  ]],
+
+Cell["", "SectionFooterSpacer"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ Cell[BoxData[
+  InterpretationBox[
+   StyleBox[
+    GraphicsBox[{},
+     BaselinePosition->Baseline,
+     ImageSize->{6, 0}],
+    CacheGraphics->False],
+   Spacer[6]]]],
+ "Tutorials"
+}], "GuideTutorialsSection",
+ WholeCellGroupOpener->True,
+ CellID->415694126],
+
+Cell["", "SectionHeaderSpacer"],
+
+Cell[TextData[Cell[BoxData[
+ TemplateBox[{Cell[
+    TextData[
+     RowBox[{"Working", " ", "with", " ", "units"}]]],
+   "paclet:AutomaticUnits/Tutorial/WorkingWithUnits"},
+  "RefLink",
+  BaseStyle->"InlineFunctionSans"]], "InlineFunctionSans"]], "GuideText",
+ CellID->43205192]
+}, Open  ]],
+
+Cell[" ", "FooterCell"]
+},
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+WindowSize->{725, 750},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Automatic unit conversion",
+TaggingRules->{
+ "ModificationHighlight" -> False, "ColorType" -> "GuideColor", "LinkTrails" -> 
+  GridBox[{{
+      RowBox[{
+        ButtonBox[
+        "Wolfram Language", ButtonData -> "paclet:guide/WolframRoot", 
+         BaseStyle -> {"Link", "DockedLinkTrail"}]}]}}, ColumnAlignments -> 
+    Left], "ExampleCounter" -> 1, "NeedPlatMsgIn" -> None, "RootCaptions" -> 
+  "", "Metadata" -> {
+   "built" -> "{2017, 1, 30, 12, 0, 14.962639}", 
+    "history" -> {"1.1", "", "", ""}, "context" -> "AutomaticUnits`", 
+    "keywords" -> {}, "specialkeywords" -> {}, 
+    "tutorialcollectionlinks" -> {}, "index" -> True, "label" -> 
+    "Automatic Units Guide", "language" -> "en", "paclet" -> "AutomaticUnits",
+     "status" -> "None", "summary" -> 
+    "This package provides facilities for handling physical units within \
+computations in an automated way.", "synonyms" -> {}, "tabletags" -> 
+    DocumentationBuild`Make`Private`tabletaggingrules$2084, "title" -> 
+    "Automatic unit conversion", "titlemodifier" -> "", "windowtitle" -> 
+    "Automatic unit conversion", "type" -> "Guide", "uri" -> 
+    "AutomaticUnits/guide/AutomaticUnits"}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Reference.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[597, 21, 3850, 89, 70, "AnchorBarGrid",
+ CellID->1],
+Cell[CellGroupData[{
+Cell[4472, 114, 67, 1, 70, "GuideTitle",
+ CellID->942062912],
+Cell[4542, 117, 157, 4, 70, "GuideAbstract",
+ CellID->2001916300]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4736, 126, 257, 11, 70, "GuideReferenceSection"],
+Cell[4996, 139, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[CellGroupData[{
+Cell[5052, 143, 76, 1, 70, "GuideFunctionsSubsection",
+ CellID->116948676],
+Cell[5131, 146, 320, 10, 70, "GuideText",
+ CellID->203374175],
+Cell[5454, 158, 311, 10, 70, "GuideText",
+ CellID->1463276848],
+Cell[5768, 170, 313, 10, 70, "GuideText",
+ CellID->505413840],
+Cell[6084, 182, 313, 10, 70, "GuideText",
+ CellID->187718429],
+Cell[6400, 194, 339, 11, 70, "GuideText",
+ CellID->660639527],
+Cell[6742, 207, 343, 10, 70, "GuideText",
+ CellID->436745944],
+Cell[7088, 219, 323, 10, 70, "GuideText",
+ CellID->9896388]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7448, 234, 73, 1, 70, "GuideFunctionsSubsection",
+ CellID->550246537],
+Cell[7524, 237, 293, 10, 70, "GuideText",
+ CellID->42856944],
+Cell[7820, 249, 305, 10, 70, "GuideText",
+ CellID->577567287],
+Cell[8128, 261, 332, 10, 70, "GuideText",
+ CellID->472827717]
+}, Open  ]],
+Cell[8475, 274, 31, 0, 70, "SectionFooterSpacer"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8543, 279, 277, 12, 70, "GuideTutorialsSection",
+ CellID->415694126],
+Cell[8823, 293, 31, 0, 70, "SectionHeaderSpacer"],
+Cell[8857, 295, 277, 7, 70, "GuideText",
+ CellID->43205192]
+}, Open  ]],
+Cell[9149, 305, 23, 0, 70, "FooterCell"]
+}
+]
+*)
+
+(* End of internal cache information *)

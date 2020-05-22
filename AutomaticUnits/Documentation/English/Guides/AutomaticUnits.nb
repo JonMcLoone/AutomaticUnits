@@ -1,0 +1,408 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     12129,        399]
+NotebookOptionsPosition[      9302,        301]
+NotebookOutlinePosition[      9777,        318]
+CellTagsIndexPosition[      9734,        315]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "New in: ",
+ Cell["1.1", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"],
+ " | Excised in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Excised"]
+}], "History",
+ CellID->1247902091],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->1122911449],
+
+Cell["Guide", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->686433507],
+
+Cell["AutomaticUnits", "Categorization",
+ CellChangeTimes->{{3.4632302203776083`*^9, 3.4632302261126437`*^9}, {
+  3.494673892323056*^9, 3.494673896689492*^9}, {3.494744480243928*^9, 
+  3.4947444804049444`*^9}},
+ CellLabel->"Paclet Name",
+ CellID->605800465],
+
+Cell["AutomaticUnits`", "Categorization",
+ CellChangeTimes->{{3.4632302283472757`*^9, 3.4632302291286163`*^9}, 
+   3.494673894610285*^9},
+ CellLabel->"Context",
+ CellID->468444828],
+
+Cell["\<\
+AutomaticUnits/guide/AutomaticUnits\
+\>", "Categorization",
+ CellChangeTimes->{{3.463230235082427*^9, 3.4632302403486586`*^9}, 
+   3.494673898914715*^9, {3.494673970749898*^9, 3.4946739795897818`*^9}, 
+   3.526731029103614*^9},
+ CellLabel->"URI"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Synonyms", "SynonymsSection",
+ CellID->1427418553],
+
+Cell["XXXX", "Synonyms",
+ CellID->1251652828]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->1427428552],
+
+Cell["XXXX", "Keywords",
+ CellID->1251852827]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Details", "DetailsSection"],
+
+Cell["jonm", "Details",
+ CellChangeTimes->{{3.436634163684328*^9, 3.436634164542378*^9}, {
+  3.463230250131035*^9, 3.463230250396691*^9}},
+ CellLabel->"Developers"],
+
+Cell["XXXX", "Details",
+ CellLabel->"Comments"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Automatic unit conversion", "GuideTitle",
+ CellChangeTimes->{{3.4366339008858223`*^9, 3.4366339061813517`*^9}, {
+  3.4367996022815757`*^9, 3.4367996375710373`*^9}, {3.4632302611010485`*^9, 
+  3.4632302658828497`*^9}},
+ CellID->942062912],
+
+Cell["\<\
+This package provides facilities for handling physical units within \
+computations in an automated way.\
+\>", "GuideAbstract",
+ CellChangeTimes->{{3.4366339266910563`*^9, 3.436633958922516*^9}, 
+   3.436800319619598*^9, {3.4632302741806803`*^9, 3.463230299542977*^9}},
+ CellID->2001916300]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "GuideFunctionsSection",
+ CellID->1866139230],
+
+Cell[CellGroupData[{
+
+Cell["Conversion functions", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.4366339771131654`*^9, 3.4366339777059994`*^9}, {
+  3.4366485071346436`*^9, 3.436648520161395*^9}, {3.436800135136773*^9, 
+  3.436800139271038*^9}, {3.4632303122319384`*^9, 3.463230314982255*^9}},
+ CellID->116948676],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["Convert",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/Convert"]], "InlineGuideFunction"],
+ " \[LongDash] convert a quantity in one unit to another"
+}], "GuideText",
+ CellChangeTimes->{{3.4366339803737535`*^9, 3.4366339941025457`*^9}, {
+  3.436634028783346*^9, 3.436634028783346*^9}, {3.436636977628662*^9, 
+  3.436636977628662*^9}, {3.4367978568593388`*^9, 3.436797859339898*^9}, {
+  3.4632303510176563`*^9, 3.4632303632534404`*^9}},
+ CellID->203374175],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["SI",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/SI"]], "InlineGuideFunction"],
+ " \[LongDash]convert a quantity into the SI unit system"
+}], "GuideText",
+ CellChangeTimes->{{3.4366339968015013`*^9, 3.4366340310922794`*^9}, {
+  3.436636969157374*^9, 3.436636969157374*^9}, {3.43679786280332*^9, 
+  3.436797863661375*^9}, {3.4632304143999567`*^9, 3.4632304217445526`*^9}},
+ CellID->1463276848],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["CGS",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/CGS"]], "InlineGuideFunction"],
+ " \[LongDash]convert a quantity into the CGS unit system"
+}], "GuideText",
+ CellChangeTimes->{{3.4366339968015013`*^9, 3.4366340310922794`*^9}, {
+  3.436636969157374*^9, 3.436636969157374*^9}, {3.43679786280332*^9, 
+  3.436797863661375*^9}, {3.4632304143999567`*^9, 3.4632304217445526`*^9}, {
+  3.463230453201301*^9, 3.4632304535919714`*^9}},
+ CellID->505413840],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["MKS",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/MKS"]], "InlineGuideFunction"],
+ " \[LongDash]convert a quantity into the MKS unit system"
+}], "GuideText",
+ CellChangeTimes->{{3.4366339968015013`*^9, 3.4366340310922794`*^9}, {
+  3.436636969157374*^9, 3.436636969157374*^9}, {3.43679786280332*^9, 
+  3.436797863661375*^9}, {3.4632304143999567`*^9, 3.4632304217445526`*^9}, {
+  3.4632304553421726`*^9, 3.463230455623455*^9}},
+ CellID->187718429],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ConvertTemperature",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/ConvertTemperature"]], 
+  "InlineGuideFunction"],
+ " \[LongDash] convert between temperature units"
+}], "GuideText",
+ CellChangeTimes->{{3.4366339803737535`*^9, 3.4366339941025457`*^9}, {
+  3.436634028783346*^9, 3.436634028783346*^9}, {3.436636977628662*^9, 
+  3.436636977628662*^9}, {3.4367978568593388`*^9, 3.436797859339898*^9}, {
+  3.4632303510176563`*^9, 3.4632303632534404`*^9}, {3.4632306222676506`*^9, 
+  3.463230629909156*^9}},
+ CellID->660639527],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["UnitList",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/UnitList"]], "InlineGuideFunction"],
+ " \[LongDash] convert a quantity into mixed units of descending significance"
+}], "GuideText",
+ CellChangeTimes->{{3.4366339803737535`*^9, 3.4366339941025457`*^9}, {
+  3.436634028783346*^9, 3.436634028783346*^9}, {3.436636977628662*^9, 
+  3.436636977628662*^9}, {3.4367978568593388`*^9, 3.436797859339898*^9}, {
+  3.4632303510176563`*^9, 3.4632303632534404`*^9}, {3.503668375169034*^9, 
+  3.5036684075542717`*^9}},
+ CellID->436745944],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["$DefaultUnitSet",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/$DefaultUnitSet"]], 
+  "InlineGuideFunction"],
+ " \[LongDash] default units to use in output"
+}], "GuideText",
+ CellChangeTimes->{{3.4366339803737535`*^9, 3.4366339941025457`*^9}, {
+  3.436634028783346*^9, 3.436634028783346*^9}, {3.436636977628662*^9, 
+  3.436636977628662*^9}, {3.4367978568593388`*^9, 3.436797859339898*^9}, {
+  3.4632303510176563`*^9, 3.4632303632534404`*^9}, {3.4632306222676506`*^9, 
+  3.463230629909156*^9}},
+ CellID->9896388]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Unit descriptions", "GuideFunctionsSubsection",
+ CellChangeTimes->{{3.4367998061720448`*^9, 3.4367998098382797`*^9}, {
+  3.4368000076745605`*^9, 3.436800019376311*^9}, {3.436800464568489*^9, 
+  3.436800464708898*^9}, {3.4632306410823174`*^9, 3.463230650333383*^9}},
+ CellID->550246537],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["Unit",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/Unit"]], "InlineGuideFunction"],
+ " \[LongDash] a unit based quantity"
+}], "GuideText",
+ CellChangeTimes->{{3.4368530369757876`*^9, 3.436853077957776*^9}, {
+  3.4656365738876095`*^9, 3.465636579918975*^9}},
+ CellID->42856944],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["DeclareUnit",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/DeclareUnit"]], 
+  "InlineGuideFunction"],
+ " \[LongDash] declare a new unit"
+}], "GuideText",
+ CellChangeTimes->{{3.4368531208586006`*^9, 3.436853163556622*^9}, {
+  3.4656365590279493`*^9, 3.4656365619186296`*^9}},
+ CellID->577567287],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["UnitSet",
+   BaseStyle->"Link",
+   ButtonData->"paclet:AutomaticUnits/ref/UnitSet"]], "InlineGuideFunction"],
+ " \[LongDash] declare a collection of units in a common unit system"
+}], "GuideText",
+ CellChangeTimes->{{3.4368531208586006`*^9, 3.436853163556622*^9}, {
+  3.465636541683866*^9, 3.465636553027834*^9}},
+ CellID->472827717]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tutorials", "GuideTutorialsSection",
+ CellID->415694126],
+
+Cell[TextData[Cell[BoxData[
+ ButtonBox[
+  RowBox[{"Working", " ", "with", " ", "units"}],
+  BaseStyle->"Link",
+  ButtonData->
+   "paclet:AutomaticUnits/Tutorial/WorkingWithUnits"]], \
+"InlineGuideFunction"]], "GuideText",
+ CellChangeTimes->{{3.4368531208586006`*^9, 3.436853163556622*^9}, {
+  3.4656365590279493`*^9, 3.4656365619186296`*^9}, {3.4997613989237967`*^9, 
+  3.4997614011559243`*^9}},
+ CellID->43205192]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["More About", "GuideMoreAboutSection",
+ CellID->23220180],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->1567025153],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->252299663]
+}, Open  ]],
+
+Cell["Related Links", "GuideRelatedLinksSection",
+ CellID->415694148]
+},
+WindowSize->{700, 759},
+WindowMargins->{{Automatic, 498}, {Automatic, 99}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 3, 2011)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStyles.nb", 
+  CharacterEncoding -> "WindowsANSI"],
+PrivateNotebookOptions -> {"NotebookAuthor" -> ""}
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 325, 14, 22, "History",
+ CellID->1247902091],
+Cell[CellGroupData[{
+Cell[895, 38, 68, 1, 27, "CategorizationSection",
+ CellID->1122911449],
+Cell[966, 41, 78, 2, 31, "Categorization",
+ CellID->686433507],
+Cell[1047, 45, 257, 5, 31, "Categorization",
+ CellID->605800465],
+Cell[1307, 52, 180, 4, 31, "Categorization",
+ CellID->468444828],
+Cell[1490, 58, 256, 6, 31, "Categorization"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1783, 69, 56, 1, 27, "SynonymsSection",
+ CellID->1427418553],
+Cell[1842, 72, 45, 1, 17, "Synonyms",
+ CellID->1251652828]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[1924, 78, 56, 1, 17, "KeywordsSection",
+ CellID->1427428552],
+Cell[1983, 81, 45, 1, 17, "Keywords",
+ CellID->1251852827]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2065, 87, 33, 0, 17, "DetailsSection"],
+Cell[2101, 89, 164, 3, 31, "Details"],
+Cell[2268, 94, 47, 1, 31, "Details"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[2352, 100, 243, 4, 76, "GuideTitle",
+ CellID->942062912],
+Cell[2598, 106, 299, 6, 39, "GuideAbstract",
+ CellID->2001916300]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2934, 117, 54, 1, 68, "GuideFunctionsSection",
+ CellID->1866139230],
+Cell[CellGroupData[{
+Cell[3013, 122, 294, 4, 33, "GuideFunctionsSubsection",
+ CellID->116948676],
+Cell[3310, 128, 517, 11, 23, "GuideText",
+ CellID->203374175],
+Cell[3830, 141, 456, 10, 23, "GuideText",
+ CellID->1463276848],
+Cell[4289, 153, 509, 11, 23, "GuideText",
+ CellID->505413840],
+Cell[4801, 166, 509, 11, 23, "GuideText",
+ CellID->187718429],
+Cell[5313, 179, 585, 13, 23, "GuideText",
+ CellID->660639527],
+Cell[5901, 194, 591, 12, 23, "GuideText",
+ CellID->436745944],
+Cell[6495, 208, 574, 13, 23, "GuideText",
+ CellID->9896388]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7106, 226, 291, 4, 33, "GuideFunctionsSubsection",
+ CellID->550246537],
+Cell[7400, 232, 340, 9, 23, "GuideText",
+ CellID->42856944],
+Cell[7743, 243, 357, 10, 23, "GuideText",
+ CellID->577567287],
+Cell[8103, 255, 377, 9, 23, "GuideText",
+ CellID->472827717]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8529, 270, 62, 1, 70, "GuideTutorialsSection",
+ CellID->415694126],
+Cell[8594, 273, 414, 10, 23, "GuideText",
+ CellID->43205192]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9045, 288, 62, 1, 70, "GuideMoreAboutSection",
+ CellID->23220180],
+Cell[9110, 291, 51, 1, 20, "GuideMoreAbout",
+ CellID->1567025153],
+Cell[9164, 294, 50, 1, 20, "GuideMoreAbout",
+ CellID->252299663]
+}, Open  ]],
+Cell[9229, 298, 69, 1, 70, "GuideRelatedLinksSection",
+ CellID->415694148]
+}
+]
+*)
+
+(* End of internal cache information *)
